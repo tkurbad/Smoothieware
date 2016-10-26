@@ -57,8 +57,6 @@ z_axis_max_speed                            15000.0          # mm/min
 uart0.baud_rate                             250000           # Baud rate for the default hardware serial port
 second_usb_serial_enable                    false            # This enables a second usb serial port (to have both pronterface and a terminal connected)
 
-#msd_disable                                 false            # disable the MSD (USB SDCARD) when set to true
-
 # Extruder module configuration
 extruder.hotend.enable                      true             # Whether to activate the extruder module at all. All configuration is ignored if false
 extruder.hotend.steps_per_mm                820.00           # Steps per mm for extruder stepper
@@ -137,8 +135,6 @@ temperature_control.hotend.thermistor_pin   0.24             # Pin for the therm
 temperature_control.hotend.set_m_code       104              #
 temperature_control.hotend.set_and_wait_m_code 109           #
 temperature_control.hotend.designator       T                #
-#temperature_control.hotend.max_pwm          300              # Slows things down and reduces over-shoot
-#temperature_control.hotend.i_max            255              #
 
 # Ultibots original
 #temperature_control.hotend.p_factor         80.6             #
@@ -166,8 +162,6 @@ temperature_control.hotend2.designator      T1               #
 temperature_control.hotend2.p_factor        80.6             # permanently set the PID values after an auto pid
 temperature_control.hotend2.i_factor        9.683            #
 temperature_control.hotend2.d_factor        168              #
-
-#temperature_control.hotend2.max_pwm         64               # max pwm, 64 is a good value if driving a 12v resistor with 24v.
 
 # For bed
 temperature_control.bed.enable              true             #
@@ -228,9 +222,6 @@ gamma_min                                   0                #
 gamma_max                                   526.5            # change to suit your height
 gamma_max_travel                            900
 
-#probe endstop
-#probe_pin                                   1.29            # optional pin for probe
-
 alpha_fast_homing_rate_mm_s                 300              # feedrates in mm/second
 alpha_slow_homing_rate_mm_s                 50               # "
 alpha_homing_retract_mm                     3                # distance in mm
@@ -266,40 +257,6 @@ kill_button_pin                             2.11             # kill button pin. 
 # Panel See http://smoothieware.org/panel
 panel.enable                                false             # set to true to enable the panel code
 
-# Example viki2 config for an azteeg miniV2 with IDC cable
-#panel.lcd                                   viki2            # set type of panel
-#panel.spi_channel                           0                # set spi channel to use P0_18,P0_15 MOSI,SCLK
-#panel.spi_cs_pin                            0.16             # set spi chip select
-#panel.encoder_a_pin                         3.25!^           # encoder pin
-#panel.encoder_b_pin                         3.26!^           # encoder pin
-#panel.click_button_pin                      2.11!^           # click button
-#panel.a0_pin                                2.6              # st7565 needs an a0
-#panel.contrast                              8                # override contrast setting (default is 9)
-#panel.encoder_resolution                    4                # override number of clicks to move 1 item (default is 4)
-#panel.button_pause_pin                      1.22^            # kill/pause set one of these for the auxilliary button on viki2
-#panel.back_button_pin                       1.22!^           # back button recommended to use this on EXP1
-#panel.buzz_pin                              0.25             # pin for buzzer on EXP2
-#panel.red_led_pin                           2.8              # pin for red led on viki2 on EXP1
-#panel.blue_led_pin                          4.29             # pin for blue led on viki2 on EXP1
-#panel.external_sd                           true             # set to true if there is an extrernal sdcard on the panel
-#panel.external_sd.spi_channel               0                # set spi channel the sdcard is on
-#panel.external_sd.spi_cs_pin                1.23             # set spi chip select for the sdcard
-#panel.external_sd.sdcd_pin                  1.31!^           # sd detect signal (set to nc if no sdcard detect)
-#panel.menu_offset                           1                # some panels will need 1 here
-#panel.alpha_jog_feedrate                    6000             # x jogging feedrate in mm/min
-#panel.beta_jog_feedrate                     6000             # y jogging feedrate in mm/min
-#panel.gamma_jog_feedrate                    200              # z jogging feedrate in mm/min
-#panel.hotend_temperature                    190              # temp to set hotend when preheat is selected
-#panel.bed_temperature                       74               # temp to set bed when preheat is selected
-
-# Custom fan control on LCD
-#custom_menu.fan_on.enable                   true             #
-#custom_menu.fan_on.name                     fan_on           #
-#custom_menu.fan_on.command                  M106             #
-#custom_menu.fan_off.enable                  true             #
-#custom_menu.fan_off.name                    fan_off          #
-#custom_menu.fan_off.command                 M107             #
-
 # MKS specific settings
 currentcontrol_module_enable                true             #
 return_error_on_unhandled_gcode             false            #
@@ -310,9 +267,6 @@ network.webserver.enable                    true             # enable the webser
 network.telnet.enable                       true             # enable the telnet server
 network.plan9.enable                        true             # enable the plan9 network filesystem
 network.ip_address                          auto             # use dhcp to get ip address
-#network.ip_address                          10.168.8.201     # the IP address
-#network.ip_mask                             255.255.252.0    # the netmask
-#network.ip_gateway                          10.168.8.1       # the gateway address
 
 # General settings
 on_boot_gcode_enable                        true             # 	Play the on_boot_gcode file when the board boots up
