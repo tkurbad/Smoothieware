@@ -16,12 +16,12 @@ arm_solution                                linear_delta
 # Length of an Arm from Hinge to Hinge.
 arm_length                                  288.00
 # Horizontal Distance from Hinge to Hinge when Effector Is Centered.
-arm_radius                                  170.6683
+arm_radius                                  170.2203
 
 # Default Movement Rate (mm/minute) for G1/G2/G3 Moves.
-default_feed_rate                           4000
+default_feed_rate                           6000
 # Default Movement Rate (mm/minute) for G0 Moves.
-default_seek_rate                           4000             
+default_seek_rate                           6000
 
 # Arcs Are Cut into Segments (Lines). This Is the Length of These
 # Segments. Smaller Values Mean Higher Resolution, Higher Values Mean
@@ -91,12 +91,12 @@ gamma_max_endstop                           1.29^
 # Printer Homes Towards Max Endstops.
 gamma_homing_direction                      home_to_max
 # After Homing to Max, the Z Coordinate is 526 mm (Maximum Print Height).
-gamma_max                                   526.05
+gamma_max                                   525.880
 # Travel at Most 900 mm to Find Z Max Endstop.
 gamma_max_travel                            900
 
 # Feedrate in mm/s for X Axis Homing.
-alpha_fast_homing_rate_mm_s                 300
+alpha_fast_homing_rate_mm_s                 200
 # Feedrate in mm/s for X Axis Homing Endstop Rebounce.
 alpha_slow_homing_rate_mm_s                 50
 # Retract That Many Millimeters from the Endstop After Homing to Release
@@ -104,7 +104,7 @@ alpha_slow_homing_rate_mm_s                 50
 alpha_homing_retract_mm                     3
 
 # Feedrate in mm/s for Y Axis Homing.
-beta_fast_homing_rate_mm_s                  300
+beta_fast_homing_rate_mm_s                  200
 # Feedrate in mm/s for Y Axis Homing Endstop Rebounce.
 beta_slow_homing_rate_mm_s                  50
 # Retract That Many Millimeters from the Endstop After Homing to Release
@@ -112,7 +112,7 @@ beta_slow_homing_rate_mm_s                  50
 beta_homing_retract_mm                      3
 
 # Feedrate in mm/s for Z Axis Homing.
-gamma_fast_homing_rate_mm_s                 300
+gamma_fast_homing_rate_mm_s                 200
 # Feedrate in mm/s for Z Axis Homing Endstop Rebounce.
 gamma_slow_homing_rate_mm_s                 50
 # Retract That Many Millimeters from the Endstop After Homing to Release
@@ -121,11 +121,11 @@ gamma_homing_retract_mm                     3
 
 # Software Trim for X Endstop in Millimeters. Negative Values Move
 # Closer Towards the Endstop, Positive Values Move Away from It.
-alpha_trim                                  -0.448
+alpha_trim                                  -0.344
 # Software Trim for Y Endstop in Millimeters.
-beta_trim                                   -0.047
+beta_trim                                   0.0
 # Software Trim for Z Endstop in Millimeters.
-gamma_trim                                  -0.592
+gamma_trim                                  -0.485
 
 
 ## Z Probe Module Configuration [http://smoothieware.org/zprobe]
@@ -215,13 +215,29 @@ z_axis_max_speed                            15000.0
 extruder.hotend.enable                      true
 # Translate Extruder #1 Stepper Motor Steps into Millimeters of Travel,
 # i.e. Extruded Material.
-extruder.hotend.steps_per_mm                820.00
+extruder.hotend.steps_per_mm                1640.00
 # Feedrate in mm/s for Extruder #1 Stepper Motor Moves.
 extruder.hotend.default_feed_rate           600
 # Acceleration in mm/s^2 for Extruder #1 Retraction.
 extruder.hotend.acceleration                500
 # Maximum Retraction Speed for Extruder #1 in mm/s.
 extruder.hotend.max_speed                   25
+# Filament Diameter for Extruder #1. Triggers Volumetric Extrusion!
+#extruder.hotend.filament_diameter           1.75
+
+## Firmware Retraction Settings for Extruder #1.
+# Retract this Length in mm for Extruder #1 on G10 Command.
+extruder.hotend.retract_length              1
+# Retract at this Feedrate (mm/s) for Extruder #1.
+extruder.hotend.retract_feedrate            25
+# Additional length for Recovering Extruder #1.
+extruder.hotend.retract_recover_length      0
+# Recover at this Feedrate for Extruder #1.
+extruder.hotend.retract_recover_feedrate    8
+# Lift Z by this Amount in mm while Retracting Extruder #1.
+extruder.hotend.retract_zlift_length        0
+# Feedrate in mm/Minute for Lifting Z while Retracting Extruder #1.
+extruder.hotend.retract_zlift_feedrate      6000
 
 # Pin for Extruder #1 Stepper Motor 'Step' Signal.
 extruder.hotend.step_pin                    2.3
@@ -244,13 +260,29 @@ delta_current                               0.5
 extruder.hotend2.enable                     false
 # Translate Extruder #2 Stepper Motor Steps into Millimeters of Travel,
 # i.e. Extruded Material.
-extruder.hotend2.steps_per_mm               820.00
+extruder.hotend2.steps_per_mm               1745.00
 # Feedrate in mm/s for Extruder #2 Stepper Motor Moves.
 extruder.hotend2.default_feed_rate          600
 # Acceleration in mm/s^2 for Extruder #2 Retraction.
 extruder.hotend2.acceleration               500
 # Maximum Retraction Speed for Extruder #2 in mm/s.
 extruder.hotend2.max_speed                  25
+# Filament Diameter for Extruder #2. Triggers Volumetric Extrusion!
+#extruder.hotend2.filament_diameter          1.75
+
+## Firmware Retraction Settings for Extruder #2.
+# Retract this Length in mm for Extruder #2 on G10 Command.
+extruder.hotend2.retract_length             1
+# Retract at this Feedrate (mm/s) for Extruder #2.
+extruder.hotend2.retract_feedrate           25
+# Additional length for Recovering Extruder #2.
+extruder.hotend2.retract_recover_length     0
+# Recover at this Feedrate for Extruder #2.
+extruder.hotend2.retract_recover_feedrate   8
+# Lift Z by this Amount in mm while Retracting Extruder #2.
+extruder.hotend2.retract_zlift_length       0
+# Feedrate in mm/Minute for Lifting Z while Retracting Extruder #2.
+extruder.hotend2.retract_zlift_feedrate     6000
 
 # Pin for Extruder #2 Stepper Motor 'Step' Signal.
 extruder.hotend2.step_pin                   2.8
@@ -278,9 +310,9 @@ temperature_control.hotend.enable           true
 temperature_control.hotend.heater_pin       2.7
 # Hotend #1 Uses This Type of Thermistor for Temperature Control.
 # [http://smoothieware.org/temperaturecontrol#toc5]
-temperature_control.hotend.thermistor       Semitec
+#temperature_control.hotend.thermistor       Semitec
 # Pin the Thermistor of Hotend #1 Is Connected to.
-temperature_control.hotend.thermistor_pin   0.24
+#temperature_control.hotend.thermistor_pin   0.24
 # Use the Following M-Code to Set the Temperature of Hotend #1.
 temperature_control.hotend.set_m_code       104
 # Use the Following M-Code to Set the Temperature of Hotend #1 and Wait
@@ -289,15 +321,22 @@ temperature_control.hotend.set_and_wait_m_code 109
 # Use the Following Designator for Hotend #1.
 temperature_control.hotend.designator       T
 
-# PID Values Determined by PID Auto Tuning for Single E3D V6 Hotend #1
-# at 240 Degrees Celsius.
+# Reduce Maximum PWM of Hotend #1 to Prevent Overshoot.
+temperature_control.hotend.max_pwm          224
+# Set Maximum Temperature of Hotend #1.
+temperature_control.hotend.max_temp         400
+# Relax the Runaway Detection of Hotend #1.
+temperature_control.hotend.runaway_range    30
+
+# PID Values Determined by PID Auto Tuning for Single E3D V6 Hotend with
+# Silicone Sock at 275 Degrees Celsius w/o Parts Fan Running.
 # - !HAS to be redetermined for E3D Chimera Dual Extruder Setup! -
 # Use this Kp-Value for Hotend #1.
-temperature_control.hotend.p_factor         109.6
+temperature_control.hotend.p_factor         38.7
 # Use this Ki-Value for Hotend #1.
-temperature_control.hotend.i_factor         10.586
+temperature_control.hotend.i_factor         1.788
 # Use this Kd-Value for Hotend #1.
-temperature_control.hotend.d_factor         283
+temperature_control.hotend.d_factor         209
 
 # - For reference -
 # Original PID Values Supplied by Ultibots.
@@ -313,11 +352,11 @@ temperature_control.hotend.d_factor         283
 
 # Use a Thermocouple Connected Through a MAX31855 Amplifier As
 # Temperature Sensor for Hotend #1.
-#temperature_control.hotend.sensor           max31855
+temperature_control.hotend.sensor           max31855
 # Chip Select Pin of Thermocouple for Hotend #1.
-#temperature_control_hotend.chip_select_pin  2.12
+temperature_control_hotend.chip_select_pin  0.16
 # Use SPI Channel #0 for Thermocouple of Hotend #1.
-#temperature_control.hotend.spi_channel      0
+temperature_control.hotend.spi_channel      0
 
 # Enable or Disable Hotend #2.
 temperature_control.hotend2.enable          false
@@ -335,8 +374,15 @@ temperature_control.hotend2.set_and_wait_m_code 889
 # Use the Following Designator for Hotend #2.
 temperature_control.hotend2.designator      S
 
-# PID Values Determined by PID Auto Tuning for Single E3D V6 Hotend #1
-# at 240 Degrees Celsius.
+# Reduce Maximum PWM of Hotend #2 to Prevent Overshoot.
+temperature_control.hotend2.max_pwm         224
+# Set Maximum Temperature of Hotend #2.
+temperature_control.hotend2.max_temp        290
+# Relax the Runaway Detection of Hotend #2.
+temperature_control.hotend2.runaway_range   30
+
+# PID Values Determined by PID Auto Tuning for Single E3D V6 Hotend with
+# Silicone Sock at 230 Degrees Celsius with Parts Fan Running at 20%.
 # - !HAS to be redetermined for E3D Chimera Dual Extruder Setup! -
 # Use this Kp-Value for Hotend #2.
 temperature_control.hotend2.p_factor        109.6
@@ -349,12 +395,12 @@ temperature_control.hotend2.d_factor        283
 # - Options Above and Enable the Following Paragraph -
 
 # Use a Thermocouple Connected Through a MAX31855 Amplifier As
-# Temperature Sensor for Hotend #1.
-#temperature_control.hotend.sensor           max31855
-# Chip Select Pin of Thermocouple for Hotend #1.
-#temperature_control_hotend.chip_select_pin  1.30
-# Use SPI Channel #0 for Thermocouple of Hotend #1.
-#temperature_control.hotend.spi_channel      0
+# Temperature Sensor for Hotend #2.
+#temperature_control.hotend2.sensor          max31855
+# Chip Select Pin of Thermocouple for Hotend #2.
+#temperature_control_hotend2.chip_select_pin 1.30
+# Use SPI Channel #0 for Thermocouple of Hotend #2.
+#temperature_control.hotend2.spi_channel     0
 
 # Enable or Disable Heated Bed.
 temperature_control.bed.enable              true
@@ -374,11 +420,22 @@ temperature_control.bed.set_and_wait_m_code 190
 # Use the Following Designator for the Heated Bed.
 temperature_control.bed.designator          B
 
+# Bang Bang Configuration for Heated Bed Supplied by Ultibots.
 # Use Bang Bang Control Instead of PID for the Heated Bed.
 temperature_control.bed.bang_bang           true
 # Temperature in Degrees C to Use as Hysteresis for Bang Bang Control of
 # the Heated Bed.
 temperature_control.bed.hysteresis          2.0
+
+# - For reference -
+# PID Values Determined by PID Auto Tuning for Heated Bed at 110 Degrees
+# Celsius.
+# Use this Kp-Value for Heated Bed.
+#temperature_control.bed.p_factor            83.1
+# Use this Ki-Value for Heated Bed.
+#temperature_control.bed.i_factor            2.396
+# Use this Kd-Value for Heated Bed.
+#temperature_control.bed.d_factor            721
 
 
 ## Switch Module Configuration
@@ -403,9 +460,8 @@ switch.hotend_fan.input_off_command         M43
 switch.hotend_fan.output_type               digital
 # Start with the Hotend and Extruder Fans Off.
 switch.hotend_fan.startup_state             false
-# In Case Of Halt, Software Errors and the Like, Switch Hotend and
-# Extruder Fans On.
-switch.hotend_fan.fail_safe_set_to          1
+# In Case Of Halt, Leave Hotend and Extruder Fan Switch as It Is.
+switch.module_name.ignore_on_halt           true
 # Use This Pin to Switch On and Off the Hotend and Extruder Fans.
 switch.hotend_fan.output_pin                1.31
 
@@ -454,7 +510,7 @@ temperatureswitch.hotend.designator         T
 # (During Fall) the Switch Configured Above.
 temperatureswitch.hotend.threshold_temp     30.0
 # Poll Heatup of Hotend #1 in This Interval.
-temperatureswitch.hotend.heatup_poll        15
+temperatureswitch.hotend.heatup_poll        10
 # Poll Cooldown of Hotend #1 in This Interval. The Cooldown Poll
 # Interval Is Longer to Save CPU Cycles.
 temperatureswitch.hotend.cooldown_poll      60
