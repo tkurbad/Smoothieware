@@ -482,9 +482,9 @@ switch.LED.output_pin			            1.22
 # Enable Switching On and Off the Laser Module Power.
 switch.laser.enable			                true
 # Use This Command to Turn the Laser Module Power On.
-switch.laser.input_on_command               M358
+switch.laser.input_on_command               M3
 # Use This Command to Turn the Laser Module Power Off.
-switch.laser.input_off_command              M359
+switch.laser.input_off_command              M5
 # Use a Digital On/Off Switch Instead of PWM for the Laser Module Power.
 switch.laser.output_type      			    digital
 # Start with the Laser Module Power Off.
@@ -548,7 +548,7 @@ laser_module_max_power                      0.8
 # the Laser Active without Actually Burning.
 laser_module_tickle_power                   0.0
 # PWM Frequency for the Laser as Period in Microseconds.
-laser_module_pwm_period                     10
+laser_module_pwm_period                     100
 
 
 ## Button Module Configuration
