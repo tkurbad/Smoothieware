@@ -16,7 +16,7 @@ arm_solution                                linear_delta
 # Length of an Arm from Hinge to Hinge.
 arm_length                                  288.00
 # Horizontal Distance from Hinge to Hinge when Effector Is Centered.
-arm_radius                                  170.2203
+arm_radius                                  170.1265
 
 # Default Movement Rate (mm/minute) for G1/G2/G3 Moves.
 default_feed_rate                           6000
@@ -90,42 +90,42 @@ beta_max_travel                             900
 gamma_max_endstop                           1.29^
 # Printer Homes Towards Max Endstops.
 gamma_homing_direction                      home_to_max
-# After Homing to Max, the Z Coordinate is 526 mm (Maximum Print Height).
-gamma_max                                   525.880
+# After Homing to Max, the Z Coordinate is 529.25 mm (Maximum Print Height).
+gamma_max                                   529.25
 # Travel at Most 900 mm to Find Z Max Endstop.
 gamma_max_travel                            900
 
 # Feedrate in mm/s for X Axis Homing.
-alpha_fast_homing_rate_mm_s                 200
+alpha_fast_homing_rate_mm_s                 150
 # Feedrate in mm/s for X Axis Homing Endstop Rebounce.
-alpha_slow_homing_rate_mm_s                 50
+alpha_slow_homing_rate_mm_s                 20
 # Retract That Many Millimeters from the Endstop After Homing to Release
 # the Switch.
 alpha_homing_retract_mm                     3
 
 # Feedrate in mm/s for Y Axis Homing.
-beta_fast_homing_rate_mm_s                  200
+beta_fast_homing_rate_mm_s                  150
 # Feedrate in mm/s for Y Axis Homing Endstop Rebounce.
-beta_slow_homing_rate_mm_s                  50
+beta_slow_homing_rate_mm_s                  20
 # Retract That Many Millimeters from the Endstop After Homing to Release
 # the Switch.
 beta_homing_retract_mm                      3
 
 # Feedrate in mm/s for Z Axis Homing.
-gamma_fast_homing_rate_mm_s                 200
+gamma_fast_homing_rate_mm_s                 150
 # Feedrate in mm/s for Z Axis Homing Endstop Rebounce.
-gamma_slow_homing_rate_mm_s                 50
+gamma_slow_homing_rate_mm_s                 20
 # Retract That Many Millimeters from the Endstop After Homing to Release
 # the Switch.
 gamma_homing_retract_mm                     3
 
 # Software Trim for X Endstop in Millimeters. Negative Values Move
 # Closer Towards the Endstop, Positive Values Move Away from It.
-alpha_trim                                  -0.344
+alpha_trim                                  -0.501
 # Software Trim for Y Endstop in Millimeters.
-beta_trim                                   0.0
+beta_trim                                   -0.000
 # Software Trim for Z Endstop in Millimeters.
-gamma_trim                                  -0.485
+gamma_trim                                  -0.247
 
 
 ## Z Probe Module Configuration [http://smoothieware.org/zprobe]
@@ -260,7 +260,7 @@ delta_current                               0.5
 extruder.hotend2.enable                     false
 # Translate Extruder #2 Stepper Motor Steps into Millimeters of Travel,
 # i.e. Extruded Material.
-extruder.hotend2.steps_per_mm               1745.00
+extruder.hotend2.steps_per_mm               1640.00
 # Feedrate in mm/s for Extruder #2 Stepper Motor Moves.
 extruder.hotend2.default_feed_rate          600
 # Acceleration in mm/s^2 for Extruder #2 Retraction.
@@ -412,6 +412,8 @@ temperature_control.bed.thermistor          EPCOS100K
 temperature_control.bed.thermistor_pin      0.23
 # Override the Beta Value of the Heated Bed's Thermistor.
 temperature_control.bed.beta                4036
+# For SeeMeCNC's Onyx heated bed.
+#temperature_control.bed.beta                4450
 # Use the Following M-Code to Set the Temperature of the Heated Bed.
 temperature_control.bed.set_m_code          140
 # Use the Following M-Code to Set the Temperature of the Heated Bed and
@@ -490,7 +492,7 @@ switch.laser.output_type      			    digital
 # Start with the Laser Module Power Off.
 switch.laser.startup_state                  false
 # Use This Pin to Switch On and Off the Laser Module Power.
-switch.laser.output_pin			            2.12v
+switch.laser.output_pin			            2.12
 
 
 ## Temperatureswitch Module Configuration - Set Switches According to
@@ -541,7 +543,7 @@ laser_module_enable                         true
 # Pin That Controls the TTL of the Laser. This Has to Be a Hardware PWM
 # Enabled Pin, i.e. P2.0-P2.5, P1.18, P1.20, P1.21, P1.23, P1.24, P1.26,
 # P3.25, or P3.26.
-laser_module_pin                            1.23!
+laser_module_pin                            1.23v
 # Maximum Duty Cycle that Will Be Applied to the Laser.
 laser_module_max_power                      0.8
 # Duty Cycle to Apply to the Laser During Travel Moves. This Has to Keep#
