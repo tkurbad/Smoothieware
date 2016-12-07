@@ -14,9 +14,9 @@
 # K250VS is a Delta Printer.
 arm_solution                                linear_delta
 # Length of an Arm from Hinge to Hinge.
-arm_length                                  288.00
+arm_length                                  360.28
 # Horizontal Distance from Hinge to Hinge when Effector Is Centered.
-arm_radius                                  170.1265
+arm_radius                                  172.1058
 
 # Default Movement Rate (mm/minute) for G1/G2/G3 Moves.
 default_feed_rate                           6000
@@ -90,8 +90,8 @@ beta_max_travel                             900
 gamma_max_endstop                           1.29^
 # Printer Homes Towards Max Endstops.
 gamma_homing_direction                      home_to_max
-# After Homing to Max, the Z Coordinate is 529.25 mm (Maximum Print Height).
-gamma_max                                   529.25
+# After Homing to Max, the Z Coordinate is 444.45 mm (Maximum Print Height).
+gamma_max                                   444.45
 # Travel at Most 900 mm to Find Z Max Endstop.
 gamma_max_travel                            900
 
@@ -121,11 +121,11 @@ gamma_homing_retract_mm                     3
 
 # Software Trim for X Endstop in Millimeters. Negative Values Move
 # Closer Towards the Endstop, Positive Values Move Away from It.
-alpha_trim                                  -0.501
+alpha_trim                                  -0.003
 # Software Trim for Y Endstop in Millimeters.
-beta_trim                                   -0.000
+beta_trim                                   -0.388
 # Software Trim for Z Endstop in Millimeters.
-gamma_trim                                  -0.247
+gamma_trim                                  -0.153
 
 
 ## Z Probe Module Configuration [http://smoothieware.org/zprobe]
@@ -246,7 +246,7 @@ extruder.hotend.dir_pin                     0.22
 # Pin for Extruder #1 Stepper Motor 'Enable' Signal.
 extruder.hotend.en_pin                      0.21
 # Current in Ampere to Supply the Extruder #1 Stepper Motor with.
-delta_current                               0.5
+delta_current                               0.4
 
 # Extruder Offsets for Dual Extruder Setup.
 # Extruder #1 X Offset from Origin in mm.
@@ -291,7 +291,7 @@ extruder.hotend2.dir_pin                    2.13
 # Pin for Extruder #2 Stepper Motor 'Enable' Signal.
 extruder.hotend2.en_pin                     4.29
 # Current in Ampere to Supply the Extruder #2 Stepper Motor with.
-epsilon_current                             0.5
+epsilon_current                             0.4
 
 # Extruder Offsets for Dual Extruder Setup.
 # Extruder #2 X Offset from Origin in mm.
@@ -377,7 +377,7 @@ temperature_control.hotend2.designator      S
 # Reduce Maximum PWM of Hotend #2 to Prevent Overshoot.
 temperature_control.hotend2.max_pwm         224
 # Set Maximum Temperature of Hotend #2.
-temperature_control.hotend2.max_temp        290
+temperature_control.hotend2.max_temp        400
 # Relax the Runaway Detection of Hotend #2.
 temperature_control.hotend2.runaway_range   30
 
@@ -428,6 +428,11 @@ temperature_control.bed.bang_bang           true
 # Temperature in Degrees C to Use as Hysteresis for Bang Bang Control of
 # the Heated Bed.
 temperature_control.bed.hysteresis          2.0
+
+# Set Maximum Temperature of Bed.
+temperature_control.bed.max_temp            150
+# Relax the Runaway Detection of Bed.
+temperature_control.bed.runaway_range       20
 
 # - For reference -
 # PID Values Determined by PID Auto Tuning for Heated Bed at 110 Degrees
