@@ -14,9 +14,9 @@
 # K250VS is a Delta Printer.
 arm_solution                                linear_delta
 # Length of an Arm from Hinge to Hinge.
-arm_length                                  288.00
+arm_length                                  360.28
 # Horizontal Distance from Hinge to Hinge when Effector Is Centered.
-arm_radius                                  170.1265
+arm_radius                                  172.2454
 
 # Default Movement Rate (mm/minute) for G1/G2/G3 Moves.
 default_feed_rate                           6000
@@ -90,8 +90,8 @@ beta_max_travel                             900
 gamma_max_endstop                           1.29^
 # Printer Homes Towards Max Endstops.
 gamma_homing_direction                      home_to_max
-# After Homing to Max, the Z Coordinate is 529.25 mm (Maximum Print Height).
-gamma_max                                   529.25
+# After Homing to Max, the Z Coordinate is 444.45 mm (Maximum Print Height).
+gamma_max                                   444.45
 # Travel at Most 900 mm to Find Z Max Endstop.
 gamma_max_travel                            900
 
@@ -121,11 +121,11 @@ gamma_homing_retract_mm                     3
 
 # Software Trim for X Endstop in Millimeters. Negative Values Move
 # Closer Towards the Endstop, Positive Values Move Away from It.
-alpha_trim                                  -0.501
+alpha_trim                                  -0.542
 # Software Trim for Y Endstop in Millimeters.
-beta_trim                                   -0.000
+beta_trim                                   -0.088
 # Software Trim for Z Endstop in Millimeters.
-gamma_trim                                  -0.247
+gamma_trim                                  -0.160
 
 
 ## Z Probe Module Configuration [http://smoothieware.org/zprobe]
@@ -223,11 +223,11 @@ extruder.hotend.acceleration                500
 # Maximum Retraction Speed for Extruder #1 in mm/s.
 extruder.hotend.max_speed                   25
 # Filament Diameter for Extruder #1. Triggers Volumetric Extrusion!
-#extruder.hotend.filament_diameter           1.75
+extruder.hotend.filament_diameter           1.75
 
 ## Firmware Retraction Settings for Extruder #1.
 # Retract this Length in mm for Extruder #1 on G10 Command.
-extruder.hotend.retract_length              1
+extruder.hotend.retract_length              1.5
 # Retract at this Feedrate (mm/s) for Extruder #1.
 extruder.hotend.retract_feedrate            25
 # Additional length for Recovering Extruder #1.
@@ -246,7 +246,7 @@ extruder.hotend.dir_pin                     0.22
 # Pin for Extruder #1 Stepper Motor 'Enable' Signal.
 extruder.hotend.en_pin                      0.21
 # Current in Ampere to Supply the Extruder #1 Stepper Motor with.
-delta_current                               0.5
+delta_current                               0.4
 
 # Extruder Offsets for Dual Extruder Setup.
 # Extruder #1 X Offset from Origin in mm.
@@ -268,11 +268,11 @@ extruder.hotend2.acceleration               500
 # Maximum Retraction Speed for Extruder #2 in mm/s.
 extruder.hotend2.max_speed                  25
 # Filament Diameter for Extruder #2. Triggers Volumetric Extrusion!
-#extruder.hotend2.filament_diameter          1.75
+extruder.hotend2.filament_diameter          1.75
 
 ## Firmware Retraction Settings for Extruder #2.
 # Retract this Length in mm for Extruder #2 on G10 Command.
-extruder.hotend2.retract_length             1
+extruder.hotend2.retract_length             1.5
 # Retract at this Feedrate (mm/s) for Extruder #2.
 extruder.hotend2.retract_feedrate           25
 # Additional length for Recovering Extruder #2.
@@ -291,7 +291,7 @@ extruder.hotend2.dir_pin                    2.13
 # Pin for Extruder #2 Stepper Motor 'Enable' Signal.
 extruder.hotend2.en_pin                     4.29
 # Current in Ampere to Supply the Extruder #2 Stepper Motor with.
-epsilon_current                             0.5
+epsilon_current                             0.4
 
 # Extruder Offsets for Dual Extruder Setup.
 # Extruder #2 X Offset from Origin in mm.
@@ -377,7 +377,7 @@ temperature_control.hotend2.designator      S
 # Reduce Maximum PWM of Hotend #2 to Prevent Overshoot.
 temperature_control.hotend2.max_pwm         224
 # Set Maximum Temperature of Hotend #2.
-temperature_control.hotend2.max_temp        290
+temperature_control.hotend2.max_temp        400
 # Relax the Runaway Detection of Hotend #2.
 temperature_control.hotend2.runaway_range   30
 
@@ -408,12 +408,12 @@ temperature_control.bed.enable              true
 temperature_control.bed.heater_pin          2.5
 # The Bed Heater Uses This Type of Thermistor for Temperature Control.
 temperature_control.bed.thermistor          EPCOS100K
+# For SeeMeCNC's Onyx heated bed. (Remove beta value below, too!)
+#temperature_control.bed.thermistor          Semitec
 # Pin the Thermistor of the Heated Bed Is Connected to.
 temperature_control.bed.thermistor_pin      0.23
 # Override the Beta Value of the Heated Bed's Thermistor.
 temperature_control.bed.beta                4036
-# For SeeMeCNC's Onyx heated bed.
-#temperature_control.bed.beta                4450
 # Use the Following M-Code to Set the Temperature of the Heated Bed.
 temperature_control.bed.set_m_code          140
 # Use the Following M-Code to Set the Temperature of the Heated Bed and
@@ -422,22 +422,29 @@ temperature_control.bed.set_and_wait_m_code 190
 # Use the Following Designator for the Heated Bed.
 temperature_control.bed.designator          B
 
-# Bang Bang Configuration for Heated Bed Supplied by Ultibots.
-# Use Bang Bang Control Instead of PID for the Heated Bed.
-temperature_control.bed.bang_bang           true
-# Temperature in Degrees C to Use as Hysteresis for Bang Bang Control of
-# the Heated Bed.
-temperature_control.bed.hysteresis          2.0
-
-# - For reference -
 # PID Values Determined by PID Auto Tuning for Heated Bed at 110 Degrees
 # Celsius.
 # Use this Kp-Value for Heated Bed.
-#temperature_control.bed.p_factor            83.1
+temperature_control.bed.p_factor            96.1
 # Use this Ki-Value for Heated Bed.
-#temperature_control.bed.i_factor            2.396
+temperature_control.bed.i_factor            4.382
 # Use this Kd-Value for Heated Bed.
-#temperature_control.bed.d_factor            721
+temperature_control.bed.d_factor            527
+# Limit max PWM for SeeMeCNC's Onyx heated bed (12V).
+#temperature_control.hotend.max_pwm          64
+
+# Set Maximum Temperature of Bed.
+temperature_control.bed.max_temp            150
+# Relax the Runaway Detection of Bed.
+temperature_control.bed.runaway_range       20
+
+# - For reference -
+# Bang Bang Configuration for Heated Bed Supplied by Ultibots.
+# Use Bang Bang Control Instead of PID for the Heated Bed.
+#temperature_control.bed.bang_bang           true
+# Temperature in Degrees C to Use as Hysteresis for Bang Bang Control of
+# the Heated Bed.
+#temperature_control.bed.hysteresis          2.0
 
 
 ## Switch Module Configuration
@@ -558,7 +565,7 @@ laser_module_pwm_period                     100
 # Enable or Disable the Kill Button.
 kill_button_enable                          true
 # Pin the Kill Button Is Connected to.
-kill_button_pin                             2.11
+kill_button_pin                             2.11^
 
 
 ## LCD Panel Module Configuration
