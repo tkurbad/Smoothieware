@@ -16,7 +16,7 @@ arm_solution                                linear_delta
 # Length of an Arm from Hinge to Hinge.
 arm_length                                  360.28
 # Horizontal Distance from Hinge to Hinge when Effector Is Centered.
-arm_radius                                  172.2454
+arm_radius                                  172.5205
 
 # Default Movement Rate (mm/minute) for G1/G2/G3 Moves.
 default_feed_rate                           6000
@@ -91,7 +91,7 @@ gamma_max_endstop                           1.29^
 # Printer Homes Towards Max Endstops.
 gamma_homing_direction                      home_to_max
 # After Homing to Max, the Z Coordinate is 444.45 mm (Maximum Print Height).
-gamma_max                                   444.45
+gamma_max                                   434.45
 # Travel at Most 900 mm to Find Z Max Endstop.
 gamma_max_travel                            900
 
@@ -121,11 +121,11 @@ gamma_homing_retract_mm                     3
 
 # Software Trim for X Endstop in Millimeters. Negative Values Move
 # Closer Towards the Endstop, Positive Values Move Away from It.
-alpha_trim                                  -0.542
+alpha_trim                                  -0.589
 # Software Trim for Y Endstop in Millimeters.
-beta_trim                                   -0.088
+beta_trim                                   -0.091
 # Software Trim for Z Endstop in Millimeters.
-gamma_trim                                  -0.160
+gamma_trim                                  -0.119
 
 
 ## Z Probe Module Configuration [http://smoothieware.org/zprobe]
@@ -223,7 +223,7 @@ extruder.hotend.acceleration                500
 # Maximum Retraction Speed for Extruder #1 in mm/s.
 extruder.hotend.max_speed                   25
 # Filament Diameter for Extruder #1. Triggers Volumetric Extrusion!
-extruder.hotend.filament_diameter           1.75
+# extruder.hotend.filament_diameter           1.75
 
 ## Firmware Retraction Settings for Extruder #1.
 # Retract this Length in mm for Extruder #1 on G10 Command.
@@ -268,7 +268,7 @@ extruder.hotend2.acceleration               500
 # Maximum Retraction Speed for Extruder #2 in mm/s.
 extruder.hotend2.max_speed                  25
 # Filament Diameter for Extruder #2. Triggers Volumetric Extrusion!
-extruder.hotend2.filament_diameter          1.75
+# extruder.hotend2.filament_diameter          1.75
 
 ## Firmware Retraction Settings for Extruder #2.
 # Retract this Length in mm for Extruder #2 on G10 Command.
@@ -406,14 +406,14 @@ temperature_control.hotend2.d_factor        283
 temperature_control.bed.enable              true
 # Pin That Controls the Bed Heater.
 temperature_control.bed.heater_pin          2.5
-# The Bed Heater Uses This Type of Thermistor for Temperature Control.
-temperature_control.bed.thermistor          EPCOS100K
+# The original Bed Heater Uses This Type of Thermistor for Temperature Control.
+# temperature_control.bed.thermistor          EPCOS100K
 # For SeeMeCNC's Onyx heated bed. (Remove beta value below, too!)
-#temperature_control.bed.thermistor          Semitec
+temperature_control.bed.thermistor          Semitec
 # Pin the Thermistor of the Heated Bed Is Connected to.
 temperature_control.bed.thermistor_pin      0.23
 # Override the Beta Value of the Heated Bed's Thermistor.
-temperature_control.bed.beta                4036
+# temperature_control.bed.beta                4036
 # Use the Following M-Code to Set the Temperature of the Heated Bed.
 temperature_control.bed.set_m_code          140
 # Use the Following M-Code to Set the Temperature of the Heated Bed and
@@ -431,7 +431,7 @@ temperature_control.bed.i_factor            4.382
 # Use this Kd-Value for Heated Bed.
 temperature_control.bed.d_factor            527
 # Limit max PWM for SeeMeCNC's Onyx heated bed (12V).
-#temperature_control.hotend.max_pwm          64
+temperature_control.bed.max_pwm             80
 
 # Set Maximum Temperature of Bed.
 temperature_control.bed.max_temp            150
