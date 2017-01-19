@@ -16,7 +16,7 @@ arm_solution                                linear_delta
 # Length of an Arm from Hinge to Hinge.
 arm_length                                  360.28
 # Horizontal Distance from Hinge to Hinge when Effector Is Centered.
-arm_radius                                  172.5205
+arm_radius                                  170.4495
 
 # Default Movement Rate (mm/minute) for G1/G2/G3 Moves.
 default_feed_rate                           6000
@@ -90,8 +90,8 @@ beta_max_travel                             900
 gamma_max_endstop                           1.29^
 # Printer Homes Towards Max Endstops.
 gamma_homing_direction                      home_to_max
-# After Homing to Max, the Z Coordinate is 444.45 mm (Maximum Print Height).
-gamma_max                                   434.45
+# After Homing to Max, the Z Coordinate is 435.35 mm (Maximum Print Height).
+gamma_max                                   435.35
 # Travel at Most 900 mm to Find Z Max Endstop.
 gamma_max_travel                            900
 
@@ -121,11 +121,11 @@ gamma_homing_retract_mm                     3
 
 # Software Trim for X Endstop in Millimeters. Negative Values Move
 # Closer Towards the Endstop, Positive Values Move Away from It.
-alpha_trim                                  -0.589
+alpha_trim                                  -0.266
 # Software Trim for Y Endstop in Millimeters.
-beta_trim                                   -0.091
+beta_trim                                   0
 # Software Trim for Z Endstop in Millimeters.
-gamma_trim                                  -0.119
+gamma_trim                                  -0.034
 
 
 ## Z Probe Module Configuration [http://smoothieware.org/zprobe]
@@ -139,7 +139,7 @@ zprobe.slow_feedrate                        5
 # Uncomment If Probe Is Too Noisy and Produces False Readings.
 #zprobe.debounce_ms                         1
 # Feedrate for Moves Between Probe Points.
-zprobe.fast_feedrate                        40
+zprobe.fast_feedrate                        50
 # Initial Height Above the Print Bed to Start Probing from.
 zprobe.probe_height                         10
 
@@ -149,7 +149,7 @@ zprobe.probe_height                         10
 # Do a Basic Delta Calibration Routine.
 leveling-strategy.delta-calibration.enable  true
 # Radius to Probe.
-leveling-strategy.delta-calibration.radius  80
+leveling-strategy.delta-calibration.radius  100
 
 
 ########################################################################
@@ -407,13 +407,12 @@ temperature_control.bed.enable              true
 # Pin That Controls the Bed Heater.
 temperature_control.bed.heater_pin          2.5
 # The original Bed Heater Uses This Type of Thermistor for Temperature Control.
-# temperature_control.bed.thermistor          EPCOS100K
-# For SeeMeCNC's Onyx heated bed. (Remove beta value below, too!)
-temperature_control.bed.thermistor          Semitec
+#temperature_control.bed.thermistor          EPCOS100K
 # Pin the Thermistor of the Heated Bed Is Connected to.
 temperature_control.bed.thermistor_pin      0.23
-# Override the Beta Value of the Heated Bed's Thermistor.
-# temperature_control.bed.beta                4036
+# Set Beta Value of the Heated Bed's Thermistor (experimentally found
+# for SeeMeCNC's Onyx heated bed).
+temperature_control.bed.beta                4750
 # Use the Following M-Code to Set the Temperature of the Heated Bed.
 temperature_control.bed.set_m_code          140
 # Use the Following M-Code to Set the Temperature of the Heated Bed and
@@ -422,16 +421,16 @@ temperature_control.bed.set_and_wait_m_code 190
 # Use the Following Designator for the Heated Bed.
 temperature_control.bed.designator          B
 
-# PID Values Determined by PID Auto Tuning for Heated Bed at 110 Degrees
+# PID Values Determined by PID Auto Tuning for Heated Bed at 100 Degrees
 # Celsius.
 # Use this Kp-Value for Heated Bed.
-temperature_control.bed.p_factor            96.1
+temperature_control.bed.p_factor            134.6
 # Use this Ki-Value for Heated Bed.
-temperature_control.bed.i_factor            4.382
+temperature_control.bed.i_factor            6.859
 # Use this Kd-Value for Heated Bed.
-temperature_control.bed.d_factor            527
+temperature_control.bed.d_factor            660
 # Limit max PWM for SeeMeCNC's Onyx heated bed (12V).
-temperature_control.bed.max_pwm             80
+temperature_control.bed.max_pwm             192
 
 # Set Maximum Temperature of Bed.
 temperature_control.bed.max_temp            150
@@ -445,6 +444,16 @@ temperature_control.bed.runaway_range       20
 # Temperature in Degrees C to Use as Hysteresis for Bang Bang Control of
 # the Heated Bed.
 #temperature_control.bed.hysteresis          2.0
+
+# PID Values for original Heated Bed Supplied by Ultibots.
+# PID Values Determined by PID Auto Tuning for Heated Bed at 110 Degrees
+# Celsius.
+# Use this Kp-Value for Heated Bed.
+#temperature_control.bed.p_factor            96.1
+# Use this Ki-Value for Heated Bed.
+#temperature_control.bed.i_factor            4.382
+# Use this Kd-Value for Heated Bed.
+#temperature_control.bed.d_factor            527
 
 
 ## Switch Module Configuration
