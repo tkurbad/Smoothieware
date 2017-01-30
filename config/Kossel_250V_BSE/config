@@ -16,7 +16,7 @@ arm_solution                                linear_delta
 # Length of an Arm from Hinge to Hinge.
 arm_length                                  360.28
 # Horizontal Distance from Hinge to Hinge when Effector Is Centered.
-arm_radius                                  170.4495
+arm_radius                                  169.7933
 
 # Default Movement Rate (mm/minute) for G1/G2/G3 Moves.
 default_feed_rate                           6000
@@ -90,8 +90,8 @@ beta_max_travel                             900
 gamma_max_endstop                           1.29^
 # Printer Homes Towards Max Endstops.
 gamma_homing_direction                      home_to_max
-# After Homing to Max, the Z Coordinate is 435.35 mm (Maximum Print Height).
-gamma_max                                   435.35
+# After Homing to Max, the Z Coordinate is 435.532 mm (Maximum Print Height).
+gamma_max                                   435.532
 # Travel at Most 900 mm to Find Z Max Endstop.
 gamma_max_travel                            900
 
@@ -121,11 +121,11 @@ gamma_homing_retract_mm                     3
 
 # Software Trim for X Endstop in Millimeters. Negative Values Move
 # Closer Towards the Endstop, Positive Values Move Away from It.
-alpha_trim                                  -0.266
+alpha_trim                                  0
 # Software Trim for Y Endstop in Millimeters.
 beta_trim                                   0
 # Software Trim for Z Endstop in Millimeters.
-gamma_trim                                  -0.034
+gamma_trim                                  0
 
 
 ## Z Probe Module Configuration [http://smoothieware.org/zprobe]
@@ -466,6 +466,8 @@ switch.fan.input_on_command                 M106
 switch.fan.input_off_command                M107
 # Use This Pin to Switch On and Off the Parts Fan.
 switch.fan.output_pin                       2.4
+# Limit Fan RPM.
+switch.fan.max_pwm                          128
 
 # Enable Switching On and Off the Hotend and Extruder Fans.
 switch.hotend_fan.enable                    true
