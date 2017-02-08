@@ -603,10 +603,9 @@ on_boot_gcode                               /sd/on_boot.gcode
 ## Communication Configuration
 
 # Use this Baud Rate for the Default Hardware Serial Port.
-uart0.baud_rate                             250000
-# Disable Second USB Serial Port. This Would Normally Be Used to Have
-# Both Pronterface and a Terminal Connected.
-second_usb_serial_enable                    false
+uart0.baud_rate                             115200
+# Enable Second USB Serial Port.
+second_usb_serial_enable                    true
 
 # Enable the Ethernet Network Port and Services.
 network.enable                              true
