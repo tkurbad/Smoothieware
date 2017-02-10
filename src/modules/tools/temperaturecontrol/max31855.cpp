@@ -70,7 +70,6 @@ float Max31855::get_temperature()
     float sum = 0;
     for (int i=0; i<readings.size(); i++)
         sum += *readings.get_ref(i);
-    }
 
     return sum / readings.size();
 }
