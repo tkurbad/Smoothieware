@@ -134,6 +134,11 @@ bool CartGridStrategy::handleConfig()
     // allocate in AHB0
     grid = (float *)AHB0.alloc(grid_size * grid_size * sizeof(float));
 
+    if(grid == nullptr) {
+        THEKERNEL->streams->printf("Error: Not enough memory\n");
+        return false;
+    }
+
     reset_bed_level();
 
     return true;
@@ -281,7 +286,7 @@ bool CartGridStrategy::handleGcode(Gcode *gcode)
 
             return true;
 
-        } else if( gcode->g == 31 ) { // do a grid probe
+        } else if( gcode->g == 31 || gcode->g == 32) { // do a grid probe
             // first wait for an empty queue i.e. no moves left
             THEKERNEL->conveyor->wait_for_idle();
 
@@ -390,7 +395,7 @@ float CartGridStrategy::findBed()
 
 bool CartGridStrategy::doProbe(Gcode *gc)
 {
-    gc->stream->printf("Cartesian Grid Probe...\n");
+    gc->stream->printf("Rectangular Grid Probe...\n");
     setAdjustFunction(false);
     reset_bed_level();
 
@@ -436,7 +441,6 @@ bool CartGridStrategy::doProbe(Gcode *gc)
         }
     }
 
-    extrapolate_unprobed_bed_level();
     print_bed_level(gc->stream);
 
     setAdjustFunction(true);
@@ -444,55 +448,19 @@ bool CartGridStrategy::doProbe(Gcode *gc)
     return true;
 }
 
-void CartGridStrategy::extrapolate_one_point(int x, int y, int xdir, int ydir)
-{
-    if (!isnan(grid[x + (grid_size * y)])) {
-        return;  // Don't overwrite good values.
-    }
-    float a = 2 * grid[(x + xdir) + (y * grid_size)] - grid[(x + xdir * 2) + (y * grid_size)]; // Left to right.
-    float b = 2 * grid[x + ((y + ydir) * grid_size)] - grid[x + ((y + ydir * 2) * grid_size)]; // Front to back.
-    float c = 2 * grid[(x + xdir) + ((y + ydir) * grid_size)] - grid[(x + xdir * 2) + ((y + ydir * 2) * grid_size)]; // Diagonal.
-    float median = c;  // Median is robust (ignores outliers).
-    if (a < b) {
-        if (b < c) median = b;
-        if (c < a) median = a;
-    } else {  // b <= a
-        if (c < b) median = b;
-        if (a < c) median = a;
-    }
-    grid[x + (grid_size * y)] = median;
-}
-
-// Fill in the unprobed points (corners of circular print surface)
-// using linear extrapolation, away from the center.
-void CartGridStrategy::extrapolate_unprobed_bed_level()
-{
-    int half = (grid_size - 1) / 2;
-    for (int y = 0; y <= half; y++) {
-        for (int x = 0; x <= half; x++) {
-            if (x + y < 3) continue;
-            extrapolate_one_point(half - x, half - y, x > 1 ? +1 : 0, y > 1 ? +1 : 0);
-            extrapolate_one_point(half + x, half - y, x > 1 ? -1 : 0, y > 1 ? +1 : 0);
-            extrapolate_one_point(half - x, half + y, x > 1 ? +1 : 0, y > 1 ? -1 : 0);
-            extrapolate_one_point(half + x, half + y, x > 1 ? -1 : 0, y > 1 ? -1 : 0);
-        }
-    }
-}
-
 void CartGridStrategy::doCompensation(float *target, bool inverse)
 {
     // Adjust print surface height by linear interpolation over the bed_level array.
-    int half = (grid_size - 1) / 2;
-    float grid_x = std::max(0.001F - half, std::min(half - 0.001F, target[X_AXIS] / AUTO_BED_LEVELING_GRID_X));
-    float grid_y = std::max(0.001F - half, std::min(half - 0.001F, target[Y_AXIS] / AUTO_BED_LEVELING_GRID_Y));
+    float grid_x = std::max(0.001F, target[X_AXIS] / AUTO_BED_LEVELING_GRID_X);
+    float grid_y = std::max(0.001F, target[Y_AXIS] / AUTO_BED_LEVELING_GRID_Y);
     int floor_x = floorf(grid_x);
     int floor_y = floorf(grid_y);
     float ratio_x = grid_x - floor_x;
     float ratio_y = grid_y - floor_y;
-    float z1 = grid[(floor_x + half) + ((floor_y + half) * grid_size)];
-    float z2 = grid[(floor_x + half) + ((floor_y + half + 1) * grid_size)];
-    float z3 = grid[(floor_x + half + 1) + ((floor_y + half) * grid_size)];
-    float z4 = grid[(floor_x + half + 1) + ((floor_y + half + 1) * grid_size)];
+    float z1 = grid[(floor_x) + ((floor_y) * grid_size)];
+    float z2 = grid[(floor_x) + ((floor_y + 1) * grid_size)];
+    float z3 = grid[(floor_x + 1) + ((floor_y) * grid_size)];
+    float z4 = grid[(floor_x + 1) + ((floor_y + 1) * grid_size)];
     float left = (1 - ratio_y) * z1 + ratio_y * z2;
     float right = (1 - ratio_y) * z3 + ratio_y * z4;
     float offset = (1 - ratio_x) * left + ratio_x * right;
