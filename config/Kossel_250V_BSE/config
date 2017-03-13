@@ -159,6 +159,17 @@ leveling-strategy.delta-calibration.enable  true
 # Radius to Probe.
 leveling-strategy.delta-calibration.radius  100
 
+# Do Delta Grid Calibration Routine.
+leveling-strategy.delta-grid.enable         true
+# Radius to Probe.
+leveling-strategy.delta-grid.radius         130
+# Size of the Leveling Grid.
+leveling-strategy.delta-grid.size           5
+# Home before leveling
+leveling-strategy.delta-grid.do_home        true
+# Initial Height Above the Print Bed to Start Probing from.
+leveling-strategy.delta-grid.initial_height 10
+
 
 ########################################################################
 ## ELECTRICAL CONFIGURATION                                           ##
@@ -507,18 +518,22 @@ switch.LED.startup_state                    false
 # Use This Pin to Switch On and Off the LED Lighting.
 switch.LED.output_pin			            1.22
 
+## The Following Switch Configuration Is Kept for Reference Only
+## It Is Now Handled in a More Consisten Way by the
+## 'laser_module_ttl_pin' Configuration Option (s. Laser Configuration).
+##
 # Enable Switching On and Off the Laser Module Power.
-switch.laser.enable			                true
+#switch.laser.enable			                false
 # Use This Command to Turn the Laser Module Power On.
-switch.laser.input_on_command               M3
+#switch.laser.input_on_command               M3
 # Use This Command to Turn the Laser Module Power Off.
-switch.laser.input_off_command              M5
+#switch.laser.input_off_command              M5
 # Use a Digital On/Off Switch Instead of PWM for the Laser Module Power.
-switch.laser.output_type      			    digital
+#switch.laser.output_type      			    digital
 # Start with the Laser Module Power Off.
-switch.laser.startup_state                  false
+#switch.laser.startup_state                  false
 # Use This Pin to Switch On and Off the Laser Module Power.
-switch.laser.output_pin			            2.12
+#switch.laser.output_pin			            2.12
 
 
 ## Temperatureswitch Module Configuration - Set Switches According to
@@ -569,10 +584,13 @@ laser_module_enable                         true
 # Pin That Controls the TTL of the Laser. This Has to Be a Hardware PWM
 # Enabled Pin, i.e. P2.0-P2.5, P1.18, P1.20, P1.21, P1.23, P1.24, P1.26,
 # P3.25, or P3.26.
-laser_module_pin                            1.23v
+laser_module_pwm_pin                        1.23v
+# This pin turns on when the laser turns on, and off when the laser
+# turns off.
+laser_module_ttl_pin                        2.12
 # Maximum Duty Cycle that Will Be Applied to the Laser.
 laser_module_max_power                      0.8
-# Duty Cycle to Apply to the Laser During Travel Moves. This Has to Keep#
+# Duty Cycle to Apply to the Laser During Travel Moves. This Has to Keep
 # the Laser Active without Actually Burning.
 laser_module_tickle_power                   0.0
 # PWM Frequency for the Laser as Period in Microseconds.
