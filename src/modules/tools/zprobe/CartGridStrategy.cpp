@@ -320,7 +320,7 @@ bool CartGridStrategy::probe_grid(int n, int m, float _x_start, float _y_start, 
 
     float x_step = _x_size / n;
     float y_step = _y_size / m;
-    for (int c = 0; c < n; ++c) {
+    for (int c = 0; c < m; ++c) {
         float y = _y_start + y_step * c;
         for (int r = 0; r < n; ++r) {
             float x = _x_start + x_step * r;
@@ -349,7 +349,7 @@ bool CartGridStrategy::handleGcode(Gcode *gcode)
             float _x_start = this->x_start, _y_start = this->y_start;
 
             if(only_by_two_corners){
-                if(gcode->has_letter('X') && gcode->has_letter('X') && gcode->has_letter('A') && gcode->has_letter('B')){
+                if(gcode->has_letter('X') && gcode->has_letter('Y') && gcode->has_letter('A') && gcode->has_letter('B')){
                     _x_start = gcode->get_value('X'); // override default probe start point
                     _y_start = gcode->get_value('Y'); // override default probe start point
                     _x_size = gcode->get_value('A'); // override default probe width
@@ -468,7 +468,7 @@ bool CartGridStrategy::doProbe(Gcode *gc)
     gc->stream->printf("Rectangular Grid Probe...\n");
 
     if(only_by_two_corners){
-        if(gc->has_letter('X') && gc->has_letter('X') && gc->has_letter('A') && gc->has_letter('B')){
+        if(gc->has_letter('X') && gc->has_letter('Y') && gc->has_letter('A') && gc->has_letter('B')){
             this->x_start = gc->get_value('X'); // override default probe start point, will get saved
             this->y_start = gc->get_value('Y'); // override default probe start point, will get saved
             this->x_size = gc->get_value('A'); // override default probe width, will get saved
