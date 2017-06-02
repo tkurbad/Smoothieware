@@ -589,12 +589,12 @@ laser_module_pwm_pin                        1.23v
 # turns off.
 laser_module_ttl_pin                        2.12
 # Maximum Duty Cycle that Will Be Applied to the Laser.
-laser_module_max_power                      0.8
+laser_module_max_power                      1.0
 # Duty Cycle to Apply to the Laser During Travel Moves. This Has to Keep
 # the Laser Active without Actually Burning.
 laser_module_tickle_power                   0.0
 # PWM Frequency for the Laser as Period in Microseconds.
-laser_module_pwm_period                     120
+laser_module_pwm_period                     1000
 
 
 ## Button Module Configuration
