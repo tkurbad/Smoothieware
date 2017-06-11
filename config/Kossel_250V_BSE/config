@@ -645,7 +645,10 @@ network.telnet.enable                       true
 # - for this to Work.                     -
 network.plan9.enable                        true
 # Use DHCP to Get an IP Address.
-network.ip_address                          auto
+network.ip_address                          10.168.8.201
+network.ip_mask                             255.255.248.0
+network.ip_gateway                          10.168.8.1
+network.hostname                            kossel
 
 
 ## Board Specific Configuration
