@@ -1,7 +1,7 @@
 ########################################################################
 ###                                                                  ###
 ###            ULTIBOTS LLC - K250VS-BSE-V3 Configuration            ###
-###             for MKS SBase instead of Azteeg X5 Mini              ###
+###             for MKS SBase Instead of Azteeg X5 Mini              ###
 ###                                                                  ###
 ########################################################################
 
@@ -11,7 +11,7 @@
 
 ## Robot Module Configuration - General Handling of Movement G-Codes
 
-# K250VS is a Delta Printer.
+# K250VS Is a Delta Printer.
 arm_solution                                linear_delta
 # Length of an Arm from Hinge to Hinge.
 arm_length                                  360.28
@@ -140,7 +140,8 @@ gamma_limit_enable                          true
 
 # Enable the Z Probe.
 zprobe.enable                               true
-# Pin the Probe Is Connected to. We Use the Z Min Endstop Connector.
+# Pin the Probe Is Connected to. Here, the Z Min Endstop Connector Is
+# Used.
 zprobe.probe_pin                            1.28^!
 # Feedrate to Use While Probing.
 zprobe.slow_feedrate                        5
@@ -254,7 +255,7 @@ extruder.hotend.retract_recover_length      0
 # Recover at this Feedrate for Extruder #1.
 extruder.hotend.retract_recover_feedrate    8
 # Lift Z by this Amount in mm while Retracting Extruder #1.
-extruder.hotend.retract_zlift_length        0
+extruder.hotend.retract_zlift_length        0.2
 # Feedrate in mm/Minute for Lifting Z while Retracting Extruder #1.
 extruder.hotend.retract_zlift_feedrate      6000
 
@@ -269,14 +270,14 @@ delta_current                               0.4
 
 # Extruder Offsets for Dual Extruder Setup.
 # Extruder #1 X Offset from Origin in mm.
-#extruder.hotend.x_offset                    -12.5
+extruder.hotend.x_offset                    -9.0
 # Extruder #1 Y Offset from Origin in mm.
-#extruder.hotend.y_offset                    0
+extruder.hotend.y_offset                    0
 # Extruder #1 Z Offset from Origin in mm.
-#extruder.hotend.z_offset                    0
+extruder.hotend.z_offset                    0
 
 # Enable or Disable Extruder #2.
-extruder.hotend2.enable                     false
+extruder.hotend2.enable                     true
 # Translate Extruder #2 Stepper Motor Steps into Millimeters of Travel,
 # i.e. Extruded Material.
 extruder.hotend2.steps_per_mm               1640.00
@@ -299,7 +300,7 @@ extruder.hotend2.retract_recover_length     0
 # Recover at this Feedrate for Extruder #2.
 extruder.hotend2.retract_recover_feedrate   8
 # Lift Z by this Amount in mm while Retracting Extruder #2.
-extruder.hotend2.retract_zlift_length       0
+extruder.hotend2.retract_zlift_length       0.2
 # Feedrate in mm/Minute for Lifting Z while Retracting Extruder #2.
 extruder.hotend2.retract_zlift_feedrate     6000
 
@@ -314,11 +315,11 @@ epsilon_current                             0.4
 
 # Extruder Offsets for Dual Extruder Setup.
 # Extruder #2 X Offset from Origin in mm.
-#extruder.hotend2.x_offset                    12.5
+extruder.hotend2.x_offset                   9.0
 # Extruder #2 Y Offset from Origin in mm.
-#extruder.hotend2.y_offset                    0
+extruder.hotend2.y_offset                   0
 # Extruder #2 Z Offset from Origin in mm.
-#extruder.hotend2.z_offset                    0
+extruder.hotend2.z_offset                   0
 
 
 ## Temperature Control Module Configuration
@@ -369,29 +370,46 @@ temperature_control.hotend.d_factor         209
 # - For the External Thermocouple Board, Disable the .thermistor* -
 # - Options Above and Enable the Following Paragraph -
 
-# Use a Thermocouple Connected Through a MAX31855 Amplifier As
+# Use a Thermocouple Connected Through an AD8495 Amplifier as
 # Temperature Sensor for Hotend #1.
-temperature_control.hotend.sensor           max31855
+temperature_control.hotend.sensor          ad8495
+# Analog Input Pin AD8495 Thermocouple Amplifier Is Connected to for
+# Hotend #1.
+temperature_control_hotend.ad8495_pin      0.26
+# AD8495 Measurement Offset for Hotend #1.
+# Note: Offset Depends on how AD8495 REF Pin Is Connected.
+#       Formula: offset = REF / 0.005.
+#       For the Adafruit AD8495 Board: 1.25 / 0.005 = 250.
+temperature_control.hotend.ad8495_offset   250
+
+# -- Obsolete --
+# Using Multiple MAX31855 Thermocouple Amplifiers Does NOT Work for the
+# MKS SBASE Smoothieboard clone, because the chip_select_pin Option Is
+# Ignored.
+#
+# Use a Thermocouple Connected Through a MAX31855 Amplifier as
+# Temperature Sensor for Hotend #1.
+#temperature_control.hotend.sensor           max31855
 # Chip Select Pin of Thermocouple for Hotend #1.
-temperature_control_hotend.chip_select_pin  0.16
+#temperature_control_hotend.chip_select_pin  0.16
 # Use SPI Channel #0 for Thermocouple of Hotend #1.
-temperature_control.hotend.spi_channel      0
+#temperature_control.hotend.spi_channel      0
 
 # Enable or Disable Hotend #2.
-temperature_control.hotend2.enable          false
+temperature_control.hotend2.enable          true
 # Pin That Controls the Heater of Hotend #2.
 temperature_control.hotend2.heater_pin      2.6
 # Hotend #2 Uses This Type of Thermistor for Temperature Control.
-temperature_control.hotend2.thermistor      Semitec
+#temperature_control.hotend2.thermistor      Semitec
 # Pin the Thermistor of Hotend #2 Is Connected to.
-temperature_control.hotend2.thermistor_pin  0.25
+#temperature_control.hotend2.thermistor_pin  0.25
 # Use the Following M-Code to Set the Temperature of Hotend #2.
 temperature_control.hotend2.set_m_code      884
 # Use the Following M-Code to Set the Temperature of Hotend #2 and Wait
 # for It to Be Reached.
 temperature_control.hotend2.set_and_wait_m_code 889
 # Use the Following Designator for Hotend #2.
-temperature_control.hotend2.designator      S
+temperature_control.hotend2.designator      T1
 
 # Reduce Maximum PWM of Hotend #2 to Prevent Overshoot.
 temperature_control.hotend2.max_pwm         224
@@ -413,12 +431,29 @@ temperature_control.hotend2.d_factor        283
 # - For the External Thermocouple Board, Disable the .thermistor* -
 # - Options Above and Enable the Following Paragraph -
 
-# Use a Thermocouple Connected Through a MAX31855 Amplifier As
+# Use a Thermocouple Connected Through an AD8495 Amplifier as
+# Temperature Sensor for Hotend #2.
+temperature_control.hotend2.sensor          ad8495
+# Analog Input Pin AD8495 Thermocouple Amplifier Is Connected to for
+# Hotend #2.
+temperature_control_hotend2.ad8495_pin      1.31
+# AD8495 Measurement Offset for Hotend #2.
+# Note: Offset Depends on how AD8495 REF Pin Is Connected.
+#       Formula: offset = REF / 0.005.
+#       For the Adafruit AD8495 Board: 1.25 / 0.005 = 250.
+temperature_control.hotend2.ad8495_offset   250
+
+# -- Obsolete --
+# Using Multiple MAX31855 Thermocouple Amplifiers Does NOT Work for the
+# MKS SBASE Smoothieboard clone, because the chip_select_pin Option Is
+# Ignored.
+#
+# Use a Thermocouple Connected Through a MAX31855 Amplifier as
 # Temperature Sensor for Hotend #2.
 #temperature_control.hotend2.sensor          max31855
 # Chip Select Pin of Thermocouple for Hotend #2.
-#temperature_control_hotend2.chip_select_pin 1.30
-# Use SPI Channel #0 for Thermocouple of Hotend #2.
+#temperature_control_hotend2.chip_select_pin 0.16
+# Use SPI Channel #1 for Thermocouple of Hotend #2.
 #temperature_control.hotend2.spi_channel     0
 
 # Enable or Disable Heated Bed.
@@ -502,7 +537,7 @@ switch.hotend_fan.startup_state             false
 # In Case Of Halt, Leave Hotend and Extruder Fan Switch as It Is.
 switch.module_name.ignore_on_halt           true
 # Use This Pin to Switch On and Off the Hotend and Extruder Fans.
-switch.hotend_fan.output_pin                1.31
+switch.hotend_fan.output_pin                3.25
 
 # Enable Switching On and Off the LED Lighting.
 switch.LED.enable			                true
@@ -539,17 +574,17 @@ switch.LED.output_pin			            1.22
 ## Temperatureswitch Module Configuration - Set Switches According to
 ##                                          Temperature
 
-# Enable Switching Based on the Temperature of Hotend #1.
+# Enable Switching Based on the Temperature of Hotends #1 and #2.
 temperatureswitch.hotend.enable             true
-# Select the Entry in the Switch Module Configuration That Will Be
-# Triggered According to the Temperature of Hotend #1.
+# Select the Entry in the Switch Module Configuration that Will Be
+# Triggered According to the Temperature of Hotends #1 and #2.
 # In this Case Switch the Hotend and Extruder Fans On or Off.
 temperatureswitch.hotend.switch             hotend_fan
-# Select the Designator for Hotend #1. This Determines the Entry in the
-# Temperature Control Module Configuration to Be Used as the Source
-# for the Trigger Temperature.
+# Select the Designating Letter for Hotends #1 and #2. This Determines
+# the Entries in the Temperature Control Module Configuration to Be Used
+# as the Sources for the Trigger Temperature.
 temperatureswitch.hotend.designator         T
-# Temperature Hotend #1 Must Have to Turn On (During Rise) or Off
+# Temperature Hotend #1 OR #2 Must Have to Turn On (During Rise) or Off
 # (During Fall) the Switch Configured Above.
 temperatureswitch.hotend.threshold_temp     35.0
 # Poll Heatup of Hotend #1 in This Interval.
@@ -557,25 +592,6 @@ temperatureswitch.hotend.heatup_poll        10
 # Poll Cooldown of Hotend #1 in This Interval. The Cooldown Poll
 # Interval Is Longer to Save CPU Cycles.
 temperatureswitch.hotend.cooldown_poll      60
-
-# Enable Switching Based on the Temperature of Hotend #2.
-temperatureswitch.hotend2.enable            false
-# Select the Entry in the Switch Module Configuration That Will Be
-# Triggered According to the Temperature of Hotend #2.
-# In this Case Switch the Hotend and Extruder Fans On or Off.
-temperatureswitch.hotend2.switch            hotend_fan
-# Select the Designator for Hotend #2. This Determines the Entry in the
-# Temperature Control Module Configuration to Be Used as the Source
-# for the Trigger Temperature.
-temperatureswitch.hotend2.designator        S
-# Temperature Hotend #2 Must Have to Turn On (During Rise) or Off
-# (During Fall) the Switch Configured Above.
-temperatureswitch.hotend2.threshold_temp    30.0
-# Poll Heatup of Hotend #2 in This Interval.
-temperatureswitch.hotend2.heatup_poll       15
-# Poll Heatup of Hotend #2 in This Interval.
-temperatureswitch.hotend2.cooldown_poll     60
-
 
 ## Laser Module Configuration
 
