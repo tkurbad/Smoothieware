@@ -1,7 +1,7 @@
 ########################################################################
 ###                                                                  ###
 ###            ULTIBOTS LLC - K250VS-BSE-V3 Configuration            ###
-###      for Milkshake Board 5XC v1.0a Instead of Azteeg X5 Mini     ###
+###             for MKS SBase Instead of Azteeg X5 Mini              ###
 ###                                                                  ###
 ########################################################################
 
@@ -35,11 +35,11 @@ delta_segments_per_second                   100
 # Translates Motor Steps into Millimeters of Travel. On a Delta Printer,
 # the Values Should Be Identical for All Three Axes (Towers).
 # For the X-Tower Stepper Motor:
-alpha_steps_per_mm                          200
+alpha_steps_per_mm                          400
 # For the Y-Tower Stepper Motor:
-beta_steps_per_mm                           200
+beta_steps_per_mm                           400
 # For the Z-Tower Stepper Motor:
-gamma_steps_per_mm                          200
+gamma_steps_per_mm                          400
 
 
 ## Planner Module Configuration - Look-Ahead and Acceleration
@@ -69,7 +69,7 @@ endstops_enable                             true
 delta_homing                                true
 
 # Pin to Use for X Maximum Endstop.
-alpha_max_endstop                           1.24^
+alpha_max_endstop                           1.25^
 # Printer Homes Towards Max Endstops.
 alpha_homing_direction                      home_to_max
 # After Homing to Max, the X Coordinate is 0 mm.
@@ -78,7 +78,7 @@ alpha_max                                   0
 alpha_max_travel                            900
 
 # Pin to Use for Y Maximum Endstop.
-beta_max_endstop                            1.26^
+beta_max_endstop                            1.27^
 # Printer Homes Towards Max Endstops.
 beta_homing_direction                       home_to_max
 # After Homing to Max, the Y Coordinate is 0 mm.
@@ -87,7 +87,7 @@ beta_max                                    0
 beta_max_travel                             900
 
 # Pin to Use for Z Maximum Endstop.
-gamma_max_endstop                           1.28^
+gamma_max_endstop                           1.29^
 # Printer Homes Towards Max Endstops.
 gamma_homing_direction                      home_to_max
 # After Homing to Max, the Z Coordinate is 435.65 mm (Maximum Print Height).
@@ -142,7 +142,7 @@ gamma_limit_enable                          true
 zprobe.enable                               true
 # Pin the Probe Is Connected to. Here, the Z Min Endstop Connector Is
 # Used.
-zprobe.probe_pin                            1.29^!
+zprobe.probe_pin                            1.28^!
 # Feedrate to Use While Probing.
 zprobe.slow_feedrate                        5
 # Uncomment If Probe Is Too Noisy and Produces False Readings.
@@ -186,11 +186,11 @@ base_stepping_frequency                     100000
 # Pin for X-Tower Stepper Motor 'Step' Signal.
 alpha_step_pin                              2.0
 # Pin for X-Tower Stepper Motor 'Direction' Signal.
-alpha_dir_pin                               0.5
+alpha_dir_pin                               0.5!
 # Pin for X-Tower Stepper Motor 'Enable' Signal.
 alpha_en_pin                                0.4
 # Current in Ampere to Supply the X-Tower Stepper Motor with.
-alpha_current                               1.0
+alpha_current                               0.8
 # Maximum Allowable Speed for the _X-Tower Actuator_ in mm/s. Here, Only
 # the X-Tower Motor Moves.
 alpha_max_rate                              15000.0
@@ -201,11 +201,11 @@ x_axis_max_speed                            15000.0
 # Pin for Y-Tower Stepper Motor 'Step' Signal.
 beta_step_pin                               2.1
 # Pin for Y-Tower Stepper Motor 'Direction' Signal.
-beta_dir_pin                                0.11
+beta_dir_pin                                0.11!
 # Pin for Y-Tower Stepper Motor 'Enable' Signal.
 beta_en_pin                                 0.10
 # Current in Ampere to Supply the Y-Tower Stepper Motor with.
-beta_current                                1.0
+beta_current                                0.8
 # Maximum Allowable Speed for the _Y-Tower Actuator_ in mm/s. Here, Only
 # the Y-Tower Motor Moves.
 beta_max_rate                               15000.0
@@ -216,11 +216,11 @@ y_axis_max_speed                            15000.0
 # Pin for Z-Tower Stepper Motor 'Step' Signal.
 gamma_step_pin                              2.2
 # Pin for Z-Tower Stepper Motor 'Direction' Signal.
-gamma_dir_pin                               0.20
+gamma_dir_pin                               0.20!
 # Pin for Z-Tower Stepper Motor 'Enable' Signal.
 gamma_en_pin                                0.19
 # Current in Ampere to Supply the Z-Tower Stepper Motor with.
-gamma_current                               1.0
+gamma_current                               0.8
 # Maximum Allowable Speed for the _Z-Tower Actuator_ in mm/s. Here, Only
 # the Z-Tower Motor Moves.
 gamma_max_rate                              15000.0
@@ -235,7 +235,7 @@ z_axis_max_speed                            15000.0
 extruder.hotend.enable                      true
 # Translate Extruder #1 Stepper Motor Steps into Millimeters of Travel,
 # i.e. Extruded Material.
-extruder.hotend.steps_per_mm                820.00
+extruder.hotend.steps_per_mm                1640.00
 # Feedrate in mm/s for Extruder #1 Stepper Motor Moves.
 extruder.hotend.default_feed_rate           600
 # Acceleration in mm/s^2 for Extruder #1 Retraction.
@@ -262,11 +262,11 @@ extruder.hotend.retract_zlift_feedrate      6000
 # Pin for Extruder #1 Stepper Motor 'Step' Signal.
 extruder.hotend.step_pin                    2.3
 # Pin for Extruder #1 Stepper Motor 'Direction' Signal.
-extruder.hotend.dir_pin                     0.22!
+extruder.hotend.dir_pin                     0.22
 # Pin for Extruder #1 Stepper Motor 'Enable' Signal.
 extruder.hotend.en_pin                      0.21
 # Current in Ampere to Supply the Extruder #1 Stepper Motor with.
-delta_current                               0.5
+delta_current                               0.4
 
 # Extruder Offsets for Dual Extruder Setup.
 # Extruder #1 X Offset from Origin in mm.
@@ -277,10 +277,10 @@ extruder.hotend.y_offset                    0
 extruder.hotend.z_offset                    0
 
 # Enable or Disable Extruder #2.
-extruder.hotend2.enable                     false
+extruder.hotend2.enable                     true
 # Translate Extruder #2 Stepper Motor Steps into Millimeters of Travel,
 # i.e. Extruded Material.
-extruder.hotend2.steps_per_mm               820.00
+extruder.hotend2.steps_per_mm               1640.00
 # Feedrate in mm/s for Extruder #2 Stepper Motor Moves.
 extruder.hotend2.default_feed_rate          600
 # Acceleration in mm/s^2 for Extruder #2 Retraction.
@@ -311,7 +311,7 @@ extruder.hotend2.dir_pin                    2.13
 # Pin for Extruder #2 Stepper Motor 'Enable' Signal.
 extruder.hotend2.en_pin                     4.29
 # Current in Ampere to Supply the Extruder #2 Stepper Motor with.
-epsilon_current                             0.5
+epsilon_current                             0.4
 
 # Extruder Offsets for Dual Extruder Setup.
 # Extruder #2 X Offset from Origin in mm.
@@ -339,7 +339,7 @@ temperature_control.hotend.set_m_code       104
 # for It to Be Reached.
 temperature_control.hotend.set_and_wait_m_code 109
 # Use the Following Designator for Hotend #1.
-temperature_control.hotend.designator       T0
+temperature_control.hotend.designator       T
 
 # Reduce Maximum PWM of Hotend #1 to Prevent Overshoot.
 temperature_control.hotend.max_pwm          224
@@ -367,32 +367,22 @@ temperature_control.hotend.d_factor         209
 # Use this Kd-Value for Hotend #1.
 #temperature_control.hotend.d_factor         168
 
-# - For the External PT100 Amplifier Board, Disable the .thermistor* -
+# - For the External Thermocouple Board, Disable the .thermistor* -
 # - Options Above and Enable the Following Paragraph -
 
-# Use a PT100 RTD Sensor Connected Through a MAX31865 Amplifier as
-# Temperature Sensor for Hotend #1.
-temperature_control.hotend.sensor           max31865
-# Chip Select Pin of Temperature Sensor for Hotend #1.
-temperature_control.hotend.chip_select_pin  0.16
-# Use SPI Channel #0 for Temperature Sensor of Hotend #1.
-temperature_control.hotend.spi_channel      0
-# Use 50Hz Noise Filter for Temperature Sensor of Hotend #1
-temperature_control.hotend.use_50hz_filter  true
-
-# -- Obsolete --
 # Use a Thermocouple Connected Through an AD8495 Amplifier as
 # Temperature Sensor for Hotend #1.
-#temperature_control.hotend.sensor          ad8495
+temperature_control.hotend.sensor          ad8495
 # Analog Input Pin AD8495 Thermocouple Amplifier Is Connected to for
 # Hotend #1.
-#temperature_control.hotend.ad8495_pin      0.26
+temperature_control_hotend.ad8495_pin      0.26
 # AD8495 Measurement Offset for Hotend #1.
 # Note: Offset Depends on how AD8495 REF Pin Is Connected.
 #       Formula: offset = REF / 0.005.
 #       For the Adafruit AD8495 Board: 1.25 / 0.005 = 250.
-#temperature_control.hotend.ad8495_offset   250
-#
+temperature_control.hotend.ad8495_offset   250
+
+# -- Obsolete --
 # Using Multiple MAX31855 Thermocouple Amplifiers Does NOT Work for the
 # MKS SBASE Smoothieboard clone, because the chip_select_pin Option Is
 # Ignored.
@@ -401,23 +391,23 @@ temperature_control.hotend.use_50hz_filter  true
 # Temperature Sensor for Hotend #1.
 #temperature_control.hotend.sensor           max31855
 # Chip Select Pin of Thermocouple for Hotend #1.
-#temperature_control.hotend.chip_select_pin  0.16
+#temperature_control_hotend.chip_select_pin  0.16
 # Use SPI Channel #0 for Thermocouple of Hotend #1.
 #temperature_control.hotend.spi_channel      0
 
 # Enable or Disable Hotend #2.
-temperature_control.hotend2.enable          false
+temperature_control.hotend2.enable          true
 # Pin That Controls the Heater of Hotend #2.
-temperature_control.hotend2.heater_pin      2.5
+temperature_control.hotend2.heater_pin      2.6
 # Hotend #2 Uses This Type of Thermistor for Temperature Control.
 #temperature_control.hotend2.thermistor      Semitec
 # Pin the Thermistor of Hotend #2 Is Connected to.
 #temperature_control.hotend2.thermistor_pin  0.25
 # Use the Following M-Code to Set the Temperature of Hotend #2.
-temperature_control.hotend2.set_m_code      104
+temperature_control.hotend2.set_m_code      884
 # Use the Following M-Code to Set the Temperature of Hotend #2 and Wait
 # for It to Be Reached.
-temperature_control.hotend2.set_and_wait_m_code 109
+temperature_control.hotend2.set_and_wait_m_code 889
 # Use the Following Designator for Hotend #2.
 temperature_control.hotend2.designator      T1
 
@@ -438,49 +428,38 @@ temperature_control.hotend2.i_factor        10.586
 # Use this Kd-Value for Hotend #2.
 temperature_control.hotend2.d_factor        283
 
-# - For the External PT100 Amplifier Board, Disable the .thermistor* -
+# - For the External Thermocouple Board, Disable the .thermistor* -
 # - Options Above and Enable the Following Paragraph -
 
-# Use a PT100 RTD Sensor Connected Through a MAX31865 Amplifier as
-# Temperature Sensor for Hotend #2.
-temperature_control.hotend2.sensor           max31865
-# Chip Select Pin of Temperature Sensor for Hotend #2.
-temperature_control.hotend2.chip_select_pin  1.30
-# Use SPI Channel #0 for Temperature Sensor of Hotend #2.
-temperature_control.hotend2.spi_channel      0
-# Use 50Hz Noise Filter for Temperature Sensor of Hotend #2.
-temperature_control.hotend2.use_50hz_filter  true
-
-# -- Obsolete --
 # Use a Thermocouple Connected Through an AD8495 Amplifier as
 # Temperature Sensor for Hotend #2.
-#temperature_control.hotend2.sensor          ad8495
+temperature_control.hotend2.sensor          ad8495
 # Analog Input Pin AD8495 Thermocouple Amplifier Is Connected to for
 # Hotend #2.
-#temperature_control.hotend2.ad8495_pin      1.31
+temperature_control_hotend2.ad8495_pin      1.31
 # AD8495 Measurement Offset for Hotend #2.
 # Note: Offset Depends on how AD8495 REF Pin Is Connected.
 #       Formula: offset = REF / 0.005.
 #       For the Adafruit AD8495 Board: 1.25 / 0.005 = 250.
-#temperature_control.hotend2.ad8495_offset   250
-#
+temperature_control.hotend2.ad8495_offset   250
+
+# -- Obsolete --
 # Using Multiple MAX31855 Thermocouple Amplifiers Does NOT Work for the
 # MKS SBASE Smoothieboard clone, because the chip_select_pin Option Is
 # Ignored.
 #
 # Use a Thermocouple Connected Through a MAX31855 Amplifier as
 # Temperature Sensor for Hotend #2.
-temperature_control.hotend2.sensor          max31855
+#temperature_control.hotend2.sensor          max31855
 # Chip Select Pin of Thermocouple for Hotend #2.
-temperature_control.hotend2.chip_select_pin 1.30
+#temperature_control_hotend2.chip_select_pin 0.16
 # Use SPI Channel #1 for Thermocouple of Hotend #2.
-temperature_control.hotend2.spi_channel     0
-
+#temperature_control.hotend2.spi_channel     0
 
 # Enable or Disable Heated Bed.
 temperature_control.bed.enable              true
 # Pin That Controls the Bed Heater.
-temperature_control.bed.heater_pin          1.23
+temperature_control.bed.heater_pin          2.5
 # The original Bed Heater Uses This Type of Thermistor for Temperature Control.
 #temperature_control.bed.thermistor          EPCOS100K
 # Pin the Thermistor of the Heated Bed Is Connected to.
@@ -505,7 +484,7 @@ temperature_control.bed.i_factor            6.859
 # Use this Kd-Value for Heated Bed.
 temperature_control.bed.d_factor            660
 # Limit max PWM for SeeMeCNC's Onyx heated bed (12V).
-temperature_control.bed.max_pwm             170
+temperature_control.bed.max_pwm             192
 
 # Set Maximum Temperature of Bed.
 temperature_control.bed.max_temp            150
@@ -558,7 +537,7 @@ switch.hotend_fan.startup_state             false
 # In Case Of Halt, Leave Hotend and Extruder Fan Switch as It Is.
 switch.module_name.ignore_on_halt           true
 # Use This Pin to Switch On and Off the Hotend and Extruder Fans.
-switch.hotend_fan.output_pin                2.6
+switch.hotend_fan.output_pin                3.25
 
 # Enable Switching On and Off the LED Lighting.
 switch.LED.enable			                true
@@ -621,10 +600,10 @@ laser_module_enable                         true
 # Pin That Controls the TTL of the Laser. This Has to Be a Hardware PWM
 # Enabled Pin, i.e. P2.0-P2.5, P1.18, P1.20, P1.21, P1.23, P1.24, P1.26,
 # P3.25, or P3.26.
-laser_module_pwm_pin                        3.25v
+laser_module_pwm_pin                        1.23v
 # This pin turns on when the laser turns on, and off when the laser
 # turns off.
-laser_module_ttl_pin                        3.26
+laser_module_ttl_pin                        2.12
 # Maximum Duty Cycle that Will Be Applied to the Laser.
 laser_module_max_power                      1.0
 # Duty Cycle to Apply to the Laser During Travel Moves. This Has to Keep
@@ -681,11 +660,11 @@ network.telnet.enable                       true
 # - make PLAN9=1                          -
 # - for this to Work.                     -
 network.plan9.enable                        true
-# IP Address Settings
-network.hostname                            kossel
+# Use DHCP to Get an IP Address.
 network.ip_address                          10.168.8.201
 network.ip_mask                             255.255.248.0
 network.ip_gateway                          10.168.8.1
+network.hostname                            kossel
 
 
 ## Board Specific Configuration
