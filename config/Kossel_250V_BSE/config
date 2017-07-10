@@ -69,7 +69,7 @@ endstops_enable                             true
 delta_homing                                true
 
 # Pin to Use for X Maximum Endstop.
-alpha_max_endstop                           1.25^
+alpha_max_endstop                           1.24^
 # Printer Homes Towards Max Endstops.
 alpha_homing_direction                      home_to_max
 # After Homing to Max, the X Coordinate is 0 mm.
@@ -78,7 +78,7 @@ alpha_max                                   0
 alpha_max_travel                            900
 
 # Pin to Use for Y Maximum Endstop.
-beta_max_endstop                            1.27^
+beta_max_endstop                            1.26^
 # Printer Homes Towards Max Endstops.
 beta_homing_direction                       home_to_max
 # After Homing to Max, the Y Coordinate is 0 mm.
@@ -87,7 +87,7 @@ beta_max                                    0
 beta_max_travel                             900
 
 # Pin to Use for Z Maximum Endstop.
-gamma_max_endstop                           1.29^
+gamma_max_endstop                           1.28^
 # Printer Homes Towards Max Endstops.
 gamma_homing_direction                      home_to_max
 # After Homing to Max, the Z Coordinate is 435.65 mm (Maximum Print Height).
@@ -142,7 +142,7 @@ gamma_limit_enable                          true
 zprobe.enable                               true
 # Pin the Probe Is Connected to. Here, the Z Min Endstop Connector Is
 # Used.
-zprobe.probe_pin                            1.28^!
+zprobe.probe_pin                            1.29^!
 # Feedrate to Use While Probing.
 zprobe.slow_feedrate                        5
 # Uncomment If Probe Is Too Noisy and Produces False Readings.
@@ -277,7 +277,7 @@ extruder.hotend.y_offset                    0
 extruder.hotend.z_offset                    0
 
 # Enable or Disable Extruder #2.
-extruder.hotend2.enable                     true
+extruder.hotend2.enable                     false
 # Translate Extruder #2 Stepper Motor Steps into Millimeters of Travel,
 # i.e. Extruded Material.
 extruder.hotend2.steps_per_mm               820.00
@@ -339,7 +339,7 @@ temperature_control.hotend.set_m_code       104
 # for It to Be Reached.
 temperature_control.hotend.set_and_wait_m_code 109
 # Use the Following Designator for Hotend #1.
-temperature_control.hotend.designator       T
+temperature_control.hotend.designator       T0
 
 # Reduce Maximum PWM of Hotend #1 to Prevent Overshoot.
 temperature_control.hotend.max_pwm          224
@@ -378,7 +378,7 @@ temperature_control.hotend.d_factor         209
 # Temperature Sensor for Hotend #1.
 temperature_control.hotend.sensor           max31855
 # Chip Select Pin of Thermocouple for Hotend #1.
-temperature_control_hotend.chip_select_pin  0.16
+temperature_control.hotend.chip_select_pin  0.16
 # Use SPI Channel #0 for Thermocouple of Hotend #1.
 temperature_control.hotend.spi_channel      0
 
@@ -388,7 +388,7 @@ temperature_control.hotend.spi_channel      0
 #temperature_control.hotend.sensor          ad8495
 # Analog Input Pin AD8495 Thermocouple Amplifier Is Connected to for
 # Hotend #1.
-#temperature_control_hotend.ad8495_pin      0.26
+#temperature_control.hotend.ad8495_pin      0.26
 # AD8495 Measurement Offset for Hotend #1.
 # Note: Offset Depends on how AD8495 REF Pin Is Connected.
 #       Formula: offset = REF / 0.005.
@@ -396,7 +396,7 @@ temperature_control.hotend.spi_channel      0
 #temperature_control.hotend.ad8495_offset   250
 
 # Enable or Disable Hotend #2.
-temperature_control.hotend2.enable          true
+temperature_control.hotend2.enable          false
 # Pin That Controls the Heater of Hotend #2.
 temperature_control.hotend2.heater_pin      2.5
 # Hotend #2 Uses This Type of Thermistor for Temperature Control.
@@ -404,10 +404,10 @@ temperature_control.hotend2.heater_pin      2.5
 # Pin the Thermistor of Hotend #2 Is Connected to.
 #temperature_control.hotend2.thermistor_pin  0.25
 # Use the Following M-Code to Set the Temperature of Hotend #2.
-temperature_control.hotend2.set_m_code      884
+temperature_control.hotend2.set_m_code      104
 # Use the Following M-Code to Set the Temperature of Hotend #2 and Wait
 # for It to Be Reached.
-temperature_control.hotend2.set_and_wait_m_code 889
+temperature_control.hotend2.set_and_wait_m_code 109
 # Use the Following Designator for Hotend #2.
 temperature_control.hotend2.designator      T1
 
@@ -439,7 +439,7 @@ temperature_control.hotend2.d_factor        283
 # Temperature Sensor for Hotend #2.
 temperature_control.hotend2.sensor          max31855
 # Chip Select Pin of Thermocouple for Hotend #2.
-temperature_control_hotend2.chip_select_pin 1.30
+temperature_control.hotend2.chip_select_pin 1.30
 # Use SPI Channel #1 for Thermocouple of Hotend #2.
 temperature_control.hotend2.spi_channel     0
 
@@ -449,7 +449,7 @@ temperature_control.hotend2.spi_channel     0
 #temperature_control.hotend2.sensor          ad8495
 # Analog Input Pin AD8495 Thermocouple Amplifier Is Connected to for
 # Hotend #2.
-#temperature_control_hotend2.ad8495_pin      1.31
+#temperature_control.hotend2.ad8495_pin      1.31
 # AD8495 Measurement Offset for Hotend #2.
 # Note: Offset Depends on how AD8495 REF Pin Is Connected.
 #       Formula: offset = REF / 0.005.
@@ -661,11 +661,11 @@ network.telnet.enable                       true
 # - make PLAN9=1                          -
 # - for this to Work.                     -
 network.plan9.enable                        true
-# Use DHCP to Get an IP Address.
+# IP Address Settings
+network.hostname                            kossel
 network.ip_address                          10.168.8.201
 network.ip_mask                             255.255.248.0
 network.ip_gateway                          10.168.8.1
-network.hostname                            kossel
 
 
 ## Board Specific Configuration
