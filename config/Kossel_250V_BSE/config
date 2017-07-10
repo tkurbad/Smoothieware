@@ -496,16 +496,16 @@ temperature_control.bed.set_and_wait_m_code 190
 # Use the Following Designator for the Heated Bed.
 temperature_control.bed.designator          B
 
-# PID Values Determined by PID Auto Tuning for Heated Bed at 100 Degrees
+# PID Values Determined by PID Auto Tuning for Heated Bed at 80 Degrees
 # Celsius.
 # Use this Kp-Value for Heated Bed.
-temperature_control.bed.p_factor            134.6
+temperature_control.bed.p_factor            136.7
 # Use this Ki-Value for Heated Bed.
-temperature_control.bed.i_factor            6.859
+temperature_control.bed.i_factor            6.720
 # Use this Kd-Value for Heated Bed.
-temperature_control.bed.d_factor            660
+temperature_control.bed.d_factor            696
 # Limit max PWM for SeeMeCNC's Onyx heated bed (12V).
-temperature_control.bed.max_pwm             170
+temperature_control.bed.max_pwm             180
 
 # Set Maximum Temperature of Bed.
 temperature_control.bed.max_temp            150
