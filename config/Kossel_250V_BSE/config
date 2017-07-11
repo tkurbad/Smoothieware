@@ -262,7 +262,7 @@ extruder.hotend.retract_zlift_feedrate      6000
 # Pin for Extruder #1 Stepper Motor 'Step' Signal.
 extruder.hotend.step_pin                    2.3
 # Pin for Extruder #1 Stepper Motor 'Direction' Signal.
-extruder.hotend.dir_pin                     0.22!
+extruder.hotend.dir_pin                     0.22
 # Pin for Extruder #1 Stepper Motor 'Enable' Signal.
 extruder.hotend.en_pin                      0.21
 # Current in Ampere to Supply the Extruder #1 Stepper Motor with.
@@ -307,7 +307,7 @@ extruder.hotend2.retract_zlift_feedrate     6000
 # Pin for Extruder #2 Stepper Motor 'Step' Signal.
 extruder.hotend2.step_pin                   2.8
 # Pin for Extruder #2 Stepper Motor 'Direction' Signal.
-extruder.hotend2.dir_pin                    2.13
+extruder.hotend2.dir_pin                    2.13!
 # Pin for Extruder #2 Stepper Motor 'Enable' Signal.
 extruder.hotend2.en_pin                     4.29
 # Current in Ampere to Supply the Extruder #2 Stepper Motor with.
