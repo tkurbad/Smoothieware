@@ -445,7 +445,7 @@ temperature_control.hotend2.d_factor        283
 # Temperature Sensor for Hotend #2.
 temperature_control.hotend2.sensor           max31865
 # Chip Select Pin of Temperature Sensor for Hotend #2.
-temperature_control.hotend2.chip_select_pin  1.30
+temperature_control.hotend2.chip_select_pin  0.28
 # Use SPI Channel #0 for Temperature Sensor of Hotend #2.
 temperature_control.hotend2.spi_channel      0
 # Use 50Hz Noise Filter for Temperature Sensor of Hotend #2.
