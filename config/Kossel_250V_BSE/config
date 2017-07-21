@@ -352,11 +352,11 @@ temperature_control.hotend.runaway_range    30
 # Silicone Sock at 275 Degrees Celsius w/o Parts Fan Running.
 # - !HAS to be redetermined for E3D Chimera Dual Extruder Setup! -
 # Use this Kp-Value for Hotend #1.
-temperature_control.hotend.p_factor         38.7
+temperature_control.hotend.p_factor         41.2
 # Use this Ki-Value for Hotend #1.
-temperature_control.hotend.i_factor         1.788
+temperature_control.hotend.i_factor         2.909
 # Use this Kd-Value for Hotend #1.
-temperature_control.hotend.d_factor         209
+temperature_control.hotend.d_factor         146
 
 # - For reference -
 # Original PID Values Supplied by Ultibots.
@@ -470,11 +470,11 @@ temperature_control.hotend2.use_50hz_filter  true
 #
 # Use a Thermocouple Connected Through a MAX31855 Amplifier as
 # Temperature Sensor for Hotend #2.
-temperature_control.hotend2.sensor          max31855
+#temperature_control.hotend2.sensor          max31855
 # Chip Select Pin of Thermocouple for Hotend #2.
-temperature_control.hotend2.chip_select_pin 1.30
+#temperature_control.hotend2.chip_select_pin 1.30
 # Use SPI Channel #1 for Thermocouple of Hotend #2.
-temperature_control.hotend2.spi_channel     0
+#temperature_control.hotend2.spi_channel     0
 
 
 # Enable or Disable Heated Bed.
