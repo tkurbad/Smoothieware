@@ -45,7 +45,7 @@ gamma_steps_per_mm                          200
 ## Planner Module Configuration - Look-Ahead and Acceleration
 
 # How Many Blocks (Line Segments) Are Stored in RAM for Look-Ahead
-# Acceleration Calculation. 
+# Acceleration Calculation.
 # DO NOT CHANGE THIS UNLESS YOU KNOW EXACTLY WHAT YOUR ARE DOING!
 planner_queue_size                          32
 # Acceleration in mm per Second^2.
@@ -90,8 +90,8 @@ beta_max_travel                             900
 gamma_max_endstop                           1.28^
 # Printer Homes Towards Max Endstops.
 gamma_homing_direction                      home_to_max
-# After Homing to Max, the Z Coordinate is 441.61 mm (Maximum Print Height).
-gamma_max                                   441.61
+# After Homing to Max, the Z Coordinate is 435.65 mm (Maximum Print Height).
+gamma_max                                   435.65
 # Travel at Most 900 mm to Find Z Max Endstop.
 gamma_max_travel                            900
 
