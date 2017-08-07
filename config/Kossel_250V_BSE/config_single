@@ -360,14 +360,14 @@ temperature_control.hotend.runaway_cooling_timeout	240
 # Use this Kd-Value for Hotend #1.
 #temperature_control.hotend.d_factor         146
 
-# PID Values Determined by PID Auto Tuning for E3D Chimera Hotend w/o
-# Silicone Sock at 250 Degrees Celsius w/o Parts Fan Running.
+# PID Values Determined by PID Auto Tuning for Single E3D V6 Hotend w/o
+# Silicone Sock at 255 Degrees Celsius w/o Parts Fan Running.
 # Use this Kp-Value for Hotend #1.
-temperature_control.hotend.p_factor         44.3
+temperature_control.hotend.p_factor         42.3
 # Use this Ki-Value for Hotend #1.
-temperature_control.hotend.i_factor         4.726
+temperature_control.hotend.i_factor         2.935
 # Use this Kd-Value for Hotend #1.
-temperature_control.hotend.d_factor         104
+temperature_control.hotend.d_factor         152
 
 
 # - For reference -
