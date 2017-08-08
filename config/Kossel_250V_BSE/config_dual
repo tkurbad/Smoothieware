@@ -90,8 +90,8 @@ beta_max_travel                             900
 gamma_max_endstop                           1.28^
 # Printer Homes Towards Max Endstops.
 gamma_homing_direction                      home_to_max
-# After Homing to Max, the Z Coordinate is 435.65 mm (Maximum Print Height).
-gamma_max                                   435.65
+# After Homing to Max, the Z Coordinate is 441.61 mm (Maximum Print Height).
+gamma_max                                   441.61
 # Travel at Most 900 mm to Find Z Max Endstop.
 gamma_max_travel                            900
 
@@ -349,6 +349,8 @@ temperature_control.hotend.max_temp         400
 temperature_control.hotend.runaway_range    30
 # Relax the Cooldown Runaway Detection of Hotend #1
 temperature_control.hotend.runaway_cooling_timeout	240
+# Relax the Heatup Runaway Detection of Hotend #1
+temperature_control.hotend.runaway_heating_timeout  300
 
 # PID Values Determined by PID Auto Tuning for Single E3D V6 Hotend with
 # Silicone Sock at 275 Degrees Celsius w/o Parts Fan Running.
@@ -441,6 +443,8 @@ temperature_control.hotend2.max_temp        400
 temperature_control.hotend2.runaway_range   30
 # Relax the Cooldown Runaway Detection of Hotend #2
 temperature_control.hotend2.runaway_cooling_timeout	240
+# Relax the Heatup Runaway Detection of Hotend #2
+temperature_control.hotend2.runaway_heating_timeout  300
 
 # PID Values Determined by PID Auto Tuning for E3D Chimera Hotend w/o
 # Silicone Sock at 250 Degrees Celsius w/o Parts Fan Running.
@@ -525,7 +529,9 @@ temperature_control.bed.max_temp            150
 # Relax the Runaway Detection of Bed.
 temperature_control.bed.runaway_range       20
 # Relax the Cooldown Runaway Detection of the Bed
-temperature_control.hotend.runaway_cooling_timeout	600
+temperature_control.bed.runaway_cooling_timeout	1200
+# Relax the Heatup Runaway Detection of the Bed
+temperature_control.bed.runaway_heating_timeout 1200
 
 # - For reference -
 # Bang Bang Configuration for Heated Bed Supplied by Ultibots.
