@@ -342,15 +342,13 @@ temperature_control.hotend.set_and_wait_m_code 109
 temperature_control.hotend.designator       T0
 
 # Reduce Maximum PWM of Hotend #1 to Prevent Overshoot.
-temperature_control.hotend.max_pwm          224
+#temperature_control.hotend.max_pwm          224
 # Set Maximum Temperature of Hotend #1.
 temperature_control.hotend.max_temp         400
 # Relax the Runaway Detection of Hotend #1.
 temperature_control.hotend.runaway_range    30
 # Relax the Cooldown Runaway Detection of Hotend #1
-temperature_control.hotend.runaway_cooling_timeout	240
-# Relax the Heatup Runaway Detection of Hotend #1
-temperature_control.hotend.runaway_heating_timeout 300
+temperature_control.hotend.runaway_cooling_timeout  240
 
 # PID Values Determined by PID Auto Tuning for Single E3D V6 Hotend with
 # Silicone Sock at 275 Degrees Celsius w/o Parts Fan Running.
@@ -443,17 +441,15 @@ temperature_control.hotend2.max_temp        400
 temperature_control.hotend2.runaway_range   30
 # Relax the Cooldown Runaway Detection of Hotend #2
 temperature_control.hotend2.runaway_cooling_timeout	240
-# Relax the Heatup Runaway Detection of Hotend #2
-temperature_control.hotend2.runaway_heating_timeout 300
 
 # PID Values Determined by PID Auto Tuning for E3D Chimera Hotend w/o
 # Silicone Sock at 250 Degrees Celsius w/o Parts Fan Running.
 # Use this Kp-Value for Hotend #2.
-temperature_control.hotend2.p_factor        35.9
+temperature_control.hotend2.p_factor        43.9
 # Use this Ki-Value for Hotend #2.
-temperature_control.hotend2.i_factor        2.798
+temperature_control.hotend2.i_factor        3.161
 # Use this Kd-Value for Hotend #2.
-temperature_control.hotend2.d_factor        115
+temperature_control.hotend2.d_factor        152
 
 # - For the External PT100 Amplifier Board, Disable the .thermistor* -
 # - Options Above and Enable the Following Paragraph -
@@ -529,9 +525,7 @@ temperature_control.bed.max_temp            150
 # Relax the Runaway Detection of Bed.
 temperature_control.bed.runaway_range       20
 # Relax the Cooldown Runaway Detection of the Bed
-temperature_control.bed.runaway_cooling_timeout 1200
-# Relax the Heatup Runaway Detection of the Bed
-temperature_control.bed.runaway_heating_timeout 1200
+temperature_control.hotend.runaway_cooling_timeout	600
 
 # - For reference -
 # Bang Bang Configuration for Heated Bed Supplied by Ultibots.
@@ -582,35 +576,35 @@ switch.module_name.ignore_on_halt           true
 switch.hotend_fan.output_pin                2.6
 
 # Enable Switching On and Off the LED Lighting.
-switch.LED.enable			                true
+switch.LED.enable                           true
 # Use This Command to Turn the LED Lighting On.
 # M355 is the Standard M-Code to Turn On Case Lights.
 switch.LED.input_on_command                 M355
 # Use This Command to Turn the LED Lighting Off.
 switch.LED.input_off_command                M356
 # Use a Digital On/Off Switch Instead of PWM for the LED Lighting.
-switch.LED.output_type      			    digital
+switch.LED.output_type                      digital
 # Start with the LED Lighting Off.
 switch.LED.startup_state                    false
 # Use This Pin to Switch On and Off the LED Lighting.
-switch.LED.output_pin			            1.22
+switch.LED.output_pin                       1.22
 
 ## The Following Switch Configuration Is Kept for Reference Only
 ## It Is Now Handled in a More Consisten Way by the
 ## 'laser_module_ttl_pin' Configuration Option (s. Laser Configuration).
 ##
 # Enable Switching On and Off the Laser Module Power.
-#switch.laser.enable			                false
+#switch.laser.enable                        false
 # Use This Command to Turn the Laser Module Power On.
 #switch.laser.input_on_command               M3
 # Use This Command to Turn the Laser Module Power Off.
 #switch.laser.input_off_command              M5
 # Use a Digital On/Off Switch Instead of PWM for the Laser Module Power.
-#switch.laser.output_type      			    digital
+#switch.laser.output_type                    digital
 # Start with the Laser Module Power Off.
 #switch.laser.startup_state                  false
 # Use This Pin to Switch On and Off the Laser Module Power.
-#switch.laser.output_pin			            2.12
+#switch.laser.output_pin                     2.12
 
 
 ## Temperatureswitch Module Configuration - Set Switches According to

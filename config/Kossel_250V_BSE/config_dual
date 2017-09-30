@@ -342,15 +342,13 @@ temperature_control.hotend.set_and_wait_m_code 109
 temperature_control.hotend.designator       T0
 
 # Reduce Maximum PWM of Hotend #1 to Prevent Overshoot.
-temperature_control.hotend.max_pwm          224
+#temperature_control.hotend.max_pwm          224
 # Set Maximum Temperature of Hotend #1.
 temperature_control.hotend.max_temp         400
 # Relax the Runaway Detection of Hotend #1.
 temperature_control.hotend.runaway_range    30
 # Relax the Cooldown Runaway Detection of Hotend #1
-temperature_control.hotend.runaway_cooling_timeout	240
-# Relax the Heatup Runaway Detection of Hotend #1
-temperature_control.hotend.runaway_heating_timeout  300
+temperature_control.hotend.runaway_cooling_timeout  240
 
 # PID Values Determined by PID Auto Tuning for Single E3D V6 Hotend with
 # Silicone Sock at 275 Degrees Celsius w/o Parts Fan Running.
@@ -436,15 +434,13 @@ temperature_control.hotend2.set_and_wait_m_code 109
 temperature_control.hotend2.designator      T1
 
 # Reduce Maximum PWM of Hotend #2 to Prevent Overshoot.
-temperature_control.hotend2.max_pwm         224
+#temperature_control.hotend2.max_pwm         224
 # Set Maximum Temperature of Hotend #2.
 temperature_control.hotend2.max_temp        400
 # Relax the Runaway Detection of Hotend #2.
 temperature_control.hotend2.runaway_range   30
 # Relax the Cooldown Runaway Detection of Hotend #2
-temperature_control.hotend2.runaway_cooling_timeout	240
-# Relax the Heatup Runaway Detection of Hotend #2
-temperature_control.hotend2.runaway_heating_timeout  300
+temperature_control.hotend2.runaway_cooling_timeout 240
 
 # PID Values Determined by PID Auto Tuning for E3D Chimera Hotend w/o
 # Silicone Sock at 250 Degrees Celsius w/o Parts Fan Running.
@@ -529,9 +525,7 @@ temperature_control.bed.max_temp            150
 # Relax the Runaway Detection of Bed.
 temperature_control.bed.runaway_range       20
 # Relax the Cooldown Runaway Detection of the Bed
-temperature_control.bed.runaway_cooling_timeout	1200
-# Relax the Heatup Runaway Detection of the Bed
-temperature_control.bed.runaway_heating_timeout 1200
+temperature_control.hotend.runaway_cooling_timeout	600
 
 # - For reference -
 # Bang Bang Configuration for Heated Bed Supplied by Ultibots.
