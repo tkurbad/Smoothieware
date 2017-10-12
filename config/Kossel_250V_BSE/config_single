@@ -360,14 +360,20 @@ temperature_control.hotend.runaway_cooling_timeout  240
 # Use this Kd-Value for Hotend #1.
 #temperature_control.hotend.d_factor         146
 
+# Use Bang Bang Control for Hotend #1.
+temperature_control.hotend.bang_bang        false
+# Temperature in Degrees C to Use as Hysteresis for Bang Bang Control of
+# Hotend #1.
+temperature_control.hotend.hysteresis       0.5
+
 # PID Values Determined by PID Auto Tuning for Single E3D V6 Hotend w/o
 # Silicone Sock at 255 Degrees Celsius w/o Parts Fan Running.
 # Use this Kp-Value for Hotend #1.
-temperature_control.hotend.p_factor         42.3
+temperature_control.hotend.p_factor         52.1
 # Use this Ki-Value for Hotend #1.
-temperature_control.hotend.i_factor         2.935
+temperature_control.hotend.i_factor         3.433
 # Use this Kd-Value for Hotend #1.
-temperature_control.hotend.d_factor         152
+temperature_control.hotend.d_factor         198
 
 
 # - For reference -
@@ -391,6 +397,8 @@ temperature_control.hotend.chip_select_pin  0.16
 temperature_control.hotend.spi_channel      0
 # Use 50Hz Noise Filter for Temperature Sensor of Hotend #1
 temperature_control.hotend.use_50hz_filter  true
+# Read the PT100 Sensor 45 times per second
+temperature_control_hotend.readings_per_second 45
 
 # -- Obsolete --
 # Use a Thermocouple Connected Through an AD8495 Amplifier as
@@ -445,11 +453,11 @@ temperature_control.hotend2.runaway_cooling_timeout	240
 # PID Values Determined by PID Auto Tuning for E3D Chimera Hotend w/o
 # Silicone Sock at 250 Degrees Celsius w/o Parts Fan Running.
 # Use this Kp-Value for Hotend #2.
-temperature_control.hotend2.p_factor        43.9
+temperature_control.hotend2.p_factor        52.1
 # Use this Ki-Value for Hotend #2.
-temperature_control.hotend2.i_factor        3.161
+temperature_control.hotend2.i_factor        3.433
 # Use this Kd-Value for Hotend #2.
-temperature_control.hotend2.d_factor        152
+temperature_control.hotend2.d_factor        198
 
 # - For the External PT100 Amplifier Board, Disable the .thermistor* -
 # - Options Above and Enable the Following Paragraph -
