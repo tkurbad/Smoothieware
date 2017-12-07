@@ -11,8 +11,8 @@
 
 include                                     config_common.mechanical
 
-# After Homing to Max, the Z Coordinate is 435.55 mm (Maximum Print Height).
-gamma_max                                   435.55
+# After Homing to Max, the Z Coordinate is 435.52 mm (Maximum Print Height).
+gamma_max                                   435.52
 
 
 ########################################################################

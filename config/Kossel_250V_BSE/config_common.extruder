@@ -1,0 +1,100 @@
+########################################################################
+###                                                                  ###
+###            ULTIBOTS LLC - K250VS-BSE-V3 Configuration            ###
+###      for Milkshake Board 5XC v1.0a Instead of Azteeg X5 Mini     ###
+###                                                                  ###
+########################################################################
+
+########################################################################
+## EXTRUDER MODULE CONFIGURATION (COMMON)                             ##
+########################################################################
+
+# Enable or Disable Extruder #1.
+extruder.hotend.enable                      true
+# Translate Extruder #1 Stepper Motor Steps into Millimeters of Travel,
+# i.e. Extruded Material.
+extruder.hotend.steps_per_mm                820.00
+# Feedrate in mm/s for Extruder #1 Stepper Motor Moves.
+extruder.hotend.default_feed_rate           600
+# Acceleration in mm/s^2 for Extruder #1 Retraction.
+extruder.hotend.acceleration                500
+# Maximum Retraction Speed for Extruder #1 in mm/s.
+extruder.hotend.max_speed                   25
+# Filament Diameter for Extruder #1. Triggers Volumetric Extrusion!
+# extruder.hotend.filament_diameter           1.75
+
+## Firmware Retraction Settings for Extruder #1.
+# Retract this Length in mm for Extruder #1 on G10 Command.
+extruder.hotend.retract_length              1.5
+# Retract at this Feedrate (mm/s) for Extruder #1.
+extruder.hotend.retract_feedrate            25
+# Additional length for Recovering Extruder #1.
+extruder.hotend.retract_recover_length      0
+# Recover at this Feedrate for Extruder #1.
+extruder.hotend.retract_recover_feedrate    8
+# Lift Z by this Amount in mm while Retracting Extruder #1.
+extruder.hotend.retract_zlift_length        0.2
+# Feedrate in mm/Minute for Lifting Z while Retracting Extruder #1.
+extruder.hotend.retract_zlift_feedrate      6000
+
+# Pin for Extruder #1 Stepper Motor 'Step' Signal.
+extruder.hotend.step_pin                    2.3
+# Pin for Extruder #1 Stepper Motor 'Direction' Signal.
+extruder.hotend.dir_pin                     0.22!
+# Pin for Extruder #1 Stepper Motor 'Enable' Signal.
+extruder.hotend.en_pin                      0.21
+# Current in Ampere to Supply the Extruder #1 Stepper Motor with.
+delta_current                               0.5
+
+# Extruder Offsets for Dual Extruder Setup.
+# Extruder #1 X Offset from Origin in mm.
+extruder.hotend.x_offset                    9.0
+# Extruder #1 Y Offset from Origin in mm.
+extruder.hotend.y_offset                    0
+# Extruder #1 Z Offset from Origin in mm.
+extruder.hotend.z_offset                    0
+
+# Enable or Disable Extruder #2. (To be overwritten per Configuration.)
+extruder.hotend2.enable                     false
+# Translate Extruder #2 Stepper Motor Steps into Millimeters of Travel,
+# i.e. Extruded Material.
+extruder.hotend2.steps_per_mm               820.00
+# Feedrate in mm/s for Extruder #2 Stepper Motor Moves.
+extruder.hotend2.default_feed_rate          600
+# Acceleration in mm/s^2 for Extruder #2 Retraction.
+extruder.hotend2.acceleration               500
+# Maximum Retraction Speed for Extruder #2 in mm/s.
+extruder.hotend2.max_speed                  25
+# Filament Diameter for Extruder #2. Triggers Volumetric Extrusion!
+# extruder.hotend2.filament_diameter          1.75
+
+## Firmware Retraction Settings for Extruder #2.
+# Retract this Length in mm for Extruder #2 on G10 Command.
+extruder.hotend2.retract_length             1.5
+# Retract at this Feedrate (mm/s) for Extruder #2.
+extruder.hotend2.retract_feedrate           25
+# Additional length for Recovering Extruder #2.
+extruder.hotend2.retract_recover_length     0
+# Recover at this Feedrate for Extruder #2.
+extruder.hotend2.retract_recover_feedrate   8
+# Lift Z by this Amount in mm while Retracting Extruder #2.
+extruder.hotend2.retract_zlift_length       0.2
+# Feedrate in mm/Minute for Lifting Z while Retracting Extruder #2.
+extruder.hotend2.retract_zlift_feedrate     6000
+
+# Pin for Extruder #2 Stepper Motor 'Step' Signal.
+extruder.hotend2.step_pin                   2.8
+# Pin for Extruder #2 Stepper Motor 'Direction' Signal.
+extruder.hotend2.dir_pin                    2.13
+# Pin for Extruder #2 Stepper Motor 'Enable' Signal.
+extruder.hotend2.en_pin                     4.29
+# Current in Ampere to Supply the Extruder #2 Stepper Motor with.
+epsilon_current                             0.5
+
+# Extruder Offsets for Dual Extruder Setup.
+# Extruder #2 X Offset from Origin in mm.
+extruder.hotend2.x_offset                   -9.0
+# Extruder #2 Y Offset from Origin in mm.
+extruder.hotend2.y_offset                   0
+# Extruder #2 Z Offset from Origin in mm.
+extruder.hotend2.z_offset                   0

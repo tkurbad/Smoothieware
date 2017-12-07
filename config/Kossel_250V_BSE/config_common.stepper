@@ -1,0 +1,60 @@
+########################################################################
+###                                                                  ###
+###            ULTIBOTS LLC - K250VS-BSE-V3 Configuration            ###
+###      for Milkshake Board 5XC v1.0a Instead of Azteeg X5 Mini     ###
+###                                                                  ###
+########################################################################
+
+########################################################################
+## STEPPER MODULE CONFIGURATION (COMMON)                              ##
+########################################################################
+
+# Duration of Step Pulses to Stepper Drivers, in Microseconds.
+microseconds_per_step_pulse                 1
+# Base Frequency for Stepping, Higher Values Produce Smoother Movement.
+base_stepping_frequency                     100000
+
+# Pin for X-Tower Stepper Motor 'Step' Signal.
+alpha_step_pin                              2.0
+# Pin for X-Tower Stepper Motor 'Direction' Signal.
+alpha_dir_pin                               0.5
+# Pin for X-Tower Stepper Motor 'Enable' Signal.
+alpha_en_pin                                0.4
+# Current in Ampere to Supply the X-Tower Stepper Motor with.
+alpha_current                               1.1
+# Maximum Allowable Speed for the _X-Tower Actuator_ in mm/s. Here, Only
+# the X-Tower Motor Moves.
+alpha_max_rate                              15000.0
+# Maximum Allowable Speed for _X-Axis Movements_ in mm/s. Here, ALL
+# Motors Move to Transport the Effector along the Cartesian X-Axis.
+x_axis_max_speed                            15000.0
+
+# Pin for Y-Tower Stepper Motor 'Step' Signal.
+beta_step_pin                               2.1
+# Pin for Y-Tower Stepper Motor 'Direction' Signal.
+beta_dir_pin                                0.11
+# Pin for Y-Tower Stepper Motor 'Enable' Signal.
+beta_en_pin                                 0.10
+# Current in Ampere to Supply the Y-Tower Stepper Motor with.
+beta_current                                1.1
+# Maximum Allowable Speed for the _Y-Tower Actuator_ in mm/s. Here, Only
+# the Y-Tower Motor Moves.
+beta_max_rate                               15000.0
+# Maximum Allowable Speed for _Y-Axis Movements_ in mm/s. Here, ALL
+# Motors Move to Transport the Effector along the Cartesian Y-Axis.
+y_axis_max_speed                            15000.0
+
+# Pin for Z-Tower Stepper Motor 'Step' Signal.
+gamma_step_pin                              2.2
+# Pin for Z-Tower Stepper Motor 'Direction' Signal.
+gamma_dir_pin                               0.20
+# Pin for Z-Tower Stepper Motor 'Enable' Signal.
+gamma_en_pin                                0.19
+# Current in Ampere to Supply the Z-Tower Stepper Motor with.
+gamma_current                               1.1
+# Maximum Allowable Speed for the _Z-Tower Actuator_ in mm/s. Here, Only
+# the Z-Tower Motor Moves.
+gamma_max_rate                              15000.0
+# Maximum Allowable Speed for _Z-Axis Movements_ in mm/s. Here, ALL
+# Motors Move to Transport the Effector along the Cartesian Z-Axis.
+z_axis_max_speed                            15000.0
