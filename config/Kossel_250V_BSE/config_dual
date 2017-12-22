@@ -11,8 +11,9 @@
 
 include                                     config_common.mechanical
 
-# After Homing to Max, the Z Coordinate is 441.45 mm (Maximum Print Height).
-gamma_max                                   441.45
+# After Homing to Max, the Z Coordinate is 442.95 mm
+# (Maximum Print Height).
+gamma_max                                   442.95
 
 
 ########################################################################
@@ -39,25 +40,25 @@ extruder.hotend2.enable                     true
 include                                     config_common.temperature
 
 # PID Values Determined by PID Auto Tuning for E3D Chimera Hotend w/o
-# Silicone Sock at 250 Degrees Celsius w/o Parts Fan Running.
+# Silicone Sock at 260 Degrees Celsius w/o Parts Fan Running.
 # Use this Kp-Value for Hotend #1.
-temperature_control.hotend.p_factor         44.3
+temperature_control.hotend.p_factor         19.3
 # Use this Ki-Value for Hotend #1.
-temperature_control.hotend.i_factor         4.726
+temperature_control.hotend.i_factor         1.201
 # Use this Kd-Value for Hotend #1.
-temperature_control.hotend.d_factor         104
+temperature_control.hotend.d_factor         78
 
 # Enable Hotend #2.
 temperature_control.hotend2.enable          true
 
 # PID Values Determined by PID Auto Tuning for E3D Chimera Hotend w/o
-# Silicone Sock at 250 Degrees Celsius w/o Parts Fan Running.
+# Silicone Sock at 260 Degrees Celsius w/o Parts Fan Running.
 # Use this Kp-Value for Hotend #2.
-temperature_control.hotend2.p_factor        35.9
+temperature_control.hotend2.p_factor        29.9
 # Use this Ki-Value for Hotend #2.
-temperature_control.hotend2.i_factor        2.798
+temperature_control.hotend2.i_factor        1.531
 # Use this Kd-Value for Hotend #2.
-temperature_control.hotend2.d_factor        115
+temperature_control.hotend2.d_factor        146
 
 
 ########################################################################
