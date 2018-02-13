@@ -375,7 +375,7 @@ temperature_control.hotend.d_factor         209
 temperature_control.hotend.sensor          ad8495
 # Analog Input Pin AD8495 Thermocouple Amplifier Is Connected to for
 # Hotend #1.
-temperature_control_hotend.ad8495_pin      -0.25
+temperature_control_hotend.ad8495_pin      0.26
 # AD8495 Measurement Offset for Hotend #1.
 # Note: Offset Depends on how AD8495 REF Pin Is Connected.
 #       Formula: offset = REF / 0.005.
@@ -396,7 +396,7 @@ temperature_control.hotend.ad8495_offset   250
 #temperature_control.hotend.spi_channel      0
 
 # Enable or Disable Hotend #2.
-temperature_control.hotend2.enable          false
+temperature_control.hotend2.enable          true
 # Pin That Controls the Heater of Hotend #2.
 temperature_control.hotend2.heater_pin      2.6
 # Hotend #2 Uses This Type of Thermistor for Temperature Control.
@@ -436,7 +436,7 @@ temperature_control.hotend2.d_factor        283
 temperature_control.hotend2.sensor          ad8495
 # Analog Input Pin AD8495 Thermocouple Amplifier Is Connected to for
 # Hotend #2.
-temperature_control_hotend2.ad8495_pin      0.26
+temperature_control_hotend2.ad8495_pin      1.31
 # AD8495 Measurement Offset for Hotend #2.
 # Note: Offset Depends on how AD8495 REF Pin Is Connected.
 #       Formula: offset = REF / 0.005.

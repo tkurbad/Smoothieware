@@ -1,0 +1,34 @@
+########################################################################
+###                                                                  ###
+###            ULTIBOTS LLC - K250VS-BSE-V3 Configuration            ###
+###      for Milkshake Board 5XC v1.0a Instead of Azteeg X5 Mini     ###
+###                                                                  ###
+########################################################################
+
+########################################################################
+## LOGICAL AND BOARD-SPECIFIC CONFIGURATION (COMMON)                  ##
+########################################################################
+
+## Player Module Configuration
+
+# Play the on_boot_gcode File During Bootup.
+on_boot_gcode_enable                        true
+# This File Holds the G-Code to Be Played During Bootup.
+on_boot_gcode                               /sd/on_boot.gcode
+
+
+## Board Specific Configuration
+
+# Enable the Current Control Module for the Internal Stepper Drivers.
+currentcontrol_module_enable                true
+# Do Not Return Errors On Unknown G-Codes
+return_error_on_unhandled_gcode             false
+
+
+## LCD Panel Module Configuration
+
+# Enable or Disable the LCD Panel.
+# The MKS SBase Supports a Touchscreen Panel Connected via Serial UART,
+# so No External Panel Is Necessary.
+panel.enable                                false
+

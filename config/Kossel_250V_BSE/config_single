@@ -1,0 +1,85 @@
+########################################################################
+###                                                                  ###
+###            ULTIBOTS LLC - K250VS-BSE-V3 Configuration            ###
+###      for Milkshake Board 5XC v1.0a Instead of Azteeg X5 Mini     ###
+###                                                                  ###
+########################################################################
+
+########################################################################
+## MECHANICAL CONFIGURATION  (SINGLE HOTEND)                          ##
+########################################################################
+
+include                                     config_common.mechanical
+
+# After Homing to Max, the Z Coordinate is 435.52 mm (Maximum Print Height).
+gamma_max                                   435.52
+
+
+########################################################################
+## STEPPER MODULE CONFIGURATION                                       ##
+########################################################################
+
+include                                     config_common.stepper
+
+
+########################################################################
+## EXTRUDER MODULE CONFIGURATION                                      ##
+########################################################################
+
+include                                     config_common.extruder
+
+# Disable Extruder #2.
+extruder.hotend2.enable                     false
+
+
+########################################################################
+## TEMPERATURE CONTROL MODULE CONFIGURATION                           ##
+########################################################################
+
+include                                     config_common.temperature
+
+# PID Values Determined by PID Auto Tuning for Single E3D V6 Hotend with
+# Silicone Sock at 255 Degrees Celsius w/o Parts Fan Running.
+# Use this Kp-Value for Hotend #1.
+temperature_control.hotend.p_factor         36.6
+# Use this Ki-Value for Hotend #1
+temperature_control.hotend.i_factor         2.159
+# Use this Kd-Value for Hotend #1.
+temperature_control.hotend.d_factor         155
+
+# Disable Hotend #2.
+temperature_control.hotend2.enable          false
+
+
+########################################################################
+## HEATED BED CONFIGURATION                                           ##
+########################################################################
+
+include                                     config_common.bed
+
+########################################################################
+## SWITCHES AND BUTTON CONFIGURATION                         ##
+########################################################################
+
+include                                     config_common.switch
+
+
+########################################################################
+## LASER MODULE CONFIGURATION                                         ##
+########################################################################
+
+include                                     config_common.laser
+
+
+########################################################################
+## COMMUNICATION AND NETWORK CONFIGURATION                            ##
+########################################################################
+
+include                                     config_common.network
+
+
+########################################################################
+## LOGICAL AND BOARD-SPECIFIC CONFIGURATION                           ##
+########################################################################
+
+include                                     config_common.logical
