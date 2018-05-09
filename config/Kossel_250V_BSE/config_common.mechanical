@@ -55,7 +55,7 @@ acceleration_ticks_per_second               1000
 # Vector Angle of Change in Direction.
 # Lower Values Mean Being More Careful, Higher Values Mean Being Faster
 # and Allowing for More Jerk.
-junction_deviation                          0.1
+junction_deviation                          0.02
 z_junction_deviation                        0
 
 
