@@ -12,19 +12,19 @@
 include                                     config_common.mechanical
 
 # Horizontal Distance from Hinge to Hinge when Effector Is Centered.
-arm_radius                                  170.1095
+arm_radius                                  170.447
 
-# After Homing to Max, the Z Coordinate is 442.83 mm
+# After Homing to Max, the Z Coordinate is 442.52 mm
 # (Maximum Print Height).
-gamma_max                                   442.83
+gamma_max                                   442.52
 
 # Software Trim for X Endstop in Millimeters. Negative Values Move
 # Closer Towards the Endstop, Positive Values Move Away from It.
-alpha_trim                                  -0.063
+alpha_trim                                  0
 # Software Trim for Y Endstop in Millimeters.
-beta_trim                                   -0.288
+beta_trim                                   -0.388
 # Software Trim for Z Endstop in Millimeters.
-gamma_trim                                  -0.745
+gamma_trim                                  -0.783
 
 
 ########################################################################
