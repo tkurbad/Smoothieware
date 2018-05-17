@@ -268,8 +268,14 @@ void Robot::load_config()
     // so the first move can be correct if homing is not performed
     ActuatorCoordinates actuator_pos;
     arm_solution->cartesian_to_actuator(machine_position, actuator_pos);
-    for (size_t i = 0; i < n_motors; i++)
+    for (size_t i = X_AXIS; i <= Z_AXIS; i++) {
         actuators[i]->change_last_milestone(actuator_pos[i]);
+    }
+
+    // initialize any extra axis to machine position
+    for (size_t i = A_AXIS; i < n_motors; i++) {
+         actuators[i]->change_last_milestone(machine_position[i]);
+    }
 
     //this->clearToolOffset();
 
@@ -584,6 +590,17 @@ void Robot::on_gcode_received(void *argument)
                         float e= gcode->has_letter('E') ? gcode->get_value('E') : 0;
                         machine_position[selected_extruder]= compensated_machine_position[selected_extruder]= e;
                         actuators[selected_extruder]->change_last_milestone(get_e_scale_fnc ? e*get_e_scale_fnc() : e);
+                    }
+                }
+                if(gcode->subcode == 0 && gcode->get_num_args() > 0) {
+                    for (int i = A_AXIS; i < n_motors; i++) {
+                        // ABC just need to set machine_position and compensated_machine_position if specified
+                        char axis= 'A'+i-3;
+                        if(!actuators[i]->is_extruder() && gcode->has_letter(axis)) {
+                            float ap= gcode->get_value(axis);
+                            machine_position[i]= compensated_machine_position[i]= ap;
+                            actuators[i]->change_last_milestone(ap); // this updates the last_milestone in the actuator
+                        }
                     }
                 }
                 #endif
