@@ -216,7 +216,12 @@ void SimpleShell::on_console_line_received( void *argument )
             case 'G':
                 // issue get state
                 get_command("state", new_message.stream);
-                //new_message.stream->printf("ok\n"); // sending this while printing will cause ok count to get out of sync
+                new_message.stream->printf("ok\n");
+                break;
+
+            case 'I':
+                // issue get state for smoopi
+                get_command("state", new_message.stream);
                 break;
 
             case 'X':
@@ -242,6 +247,10 @@ void SimpleShell::on_console_line_received( void *argument )
                     THEKERNEL->call_event(ON_GCODE_RECEIVED, &gcode);
                 }
                 new_message.stream->printf("ok\n");
+                break;
+
+            case 'S':
+                switch_command(possible_command, new_message.stream);
                 break;
 
             case 'J':
@@ -275,9 +284,9 @@ void SimpleShell::on_console_line_received( void *argument )
         } else if (cmd == "fire") {
             // these are handled by Laser module
 
-        } else if (cmd == "ok") {
-            // probably an echo so reply ok
-            new_message.stream->printf("ok\n");
+        } else if (cmd.substr(0, 2) == "ok") {
+            // probably an echo so ignore the whole line
+            //new_message.stream->printf("ok\n");
 
         }else if(!parse_command(cmd.c_str(), possible_command, new_message.stream)) {
             new_message.stream->printf("error:Unsupported command - %s\n", cmd.c_str());
@@ -644,6 +653,12 @@ void SimpleShell::version_command( string parameters, StreamOutput *stream)
     stream->printf("  NOMSD Build\r\n");
     #endif
     stream->printf("%d axis\n", MAX_ROBOT_ACTUATORS);
+    if(!(dev & 0x00100000)) {
+        stream->printf("WARNING: This is not a sanctioned board and may be unreliable and even dangerous.\nThis MCU is deprecated, and cannot guarantee proper function\n");
+        THEKERNEL->set_bad_mcu(true);
+    }else{
+        THEKERNEL->set_bad_mcu(false);
+    }
 }
 
 // Reset the system
@@ -919,8 +934,28 @@ void SimpleShell::calc_thermistor_command( string parameters, StreamOutput *stre
 // set or get switch state for a named switch
 void SimpleShell::switch_command( string parameters, StreamOutput *stream)
 {
-    string type = shift_parameter( parameters );
-    string value = shift_parameter( parameters );
+    string type;
+    string value;
+
+    if(parameters[0] == '$') {
+        // $S command
+        type = shift_parameter( parameters );
+        while(!type.empty()) {
+            struct pad_switch pad;
+            bool ok = PublicData::get_value(switch_checksum, get_checksum(type), 0, &pad);
+            if(ok) {
+                stream->printf("switch %s is %d\n", type.c_str(), pad.state);
+            }
+
+            type = shift_parameter( parameters );
+        }
+        return;
+
+    }else{
+        type = shift_parameter( parameters );
+        value = shift_parameter( parameters );
+    }
+
     bool ok = false;
     if(value.empty()) {
         // get switch state
@@ -1145,7 +1180,7 @@ void SimpleShell::jog(string parameters, StreamOutput *stream)
     // for now always 1 axis
     size_t npos= parameters.find_first_of("XYZABC");
     if(npos == string::npos) {
-        stream->printf("usage: $J X|Y|Z|A|B|C 0.01 [F0.5]\n");
+        stream->printf("usage: $J X0.01 [F0.5] - axis can be one of XYZABC, optional speed is scale of max_rate\n");
         return;
     }
 

@@ -86,8 +86,8 @@ try_again:
         //Get linenumber
         if ( first_char == 'N' ) {
             Gcode full_line = Gcode(possible_command, new_message.stream, false);
-            ln = (int) full_line.get_value('N');
-            int chksum = (int) full_line.get_value('*');
+            ln = (int) full_line.get_int('N');
+            int chksum = (int) full_line.get_int('*');
 
             //Catch message if it is M110: Set Current Line Number
             if ( full_line.has_m ) {
@@ -284,6 +284,9 @@ try_again:
                                 new_message.stream->printf(", X-MSD:1");
                                 #endif
 
+                                if(THEKERNEL->is_bad_mcu()) {
+                                    new_message.stream->printf(", X-WARNING:This is not a sanctioned board and may be unreliable and even dangerous. This MCU is deprecated, and cannot guarantee proper function\n");
+                                }
                                 new_message.stream->printf("\nok\n");
                                 return;
                             }
